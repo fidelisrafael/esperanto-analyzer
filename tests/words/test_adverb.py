@@ -33,3 +33,17 @@ class TestAdverbBasic():
     word = Adverb(' ')
 
     assert(word.metadata == dict())
+
+
+class TestAdverbPlural():
+  def test_has_plural(self):
+    assert(Adverb('multe').has_plural() == False)
+
+  def test_plural(self):
+    word = Adverb('multe')
+
+    assert(word.plural == False)
+
+  def test_plural_ending_word(self):
+    for word in ['multaj', 'multajn']:
+      assert(Adverb(word).plural == False)

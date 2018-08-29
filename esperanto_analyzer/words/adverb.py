@@ -4,3 +4,6 @@ from .base import Word
 class Adverb(Word):
   def __init__(self, content, context = None):
     Word.__init__(self, content, context)
+
+  def has_plural(self):
+    return False
