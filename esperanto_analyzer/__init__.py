@@ -1,3 +1,3 @@
-from .base import BaseAnalyzer
-from .noun import NounAnalyzer
+from .analyzers.base import BaseAnalyzer
+from .analyzers.noun import NounAnalyzer
 
