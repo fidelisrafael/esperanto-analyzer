@@ -1,3 +1,4 @@
-nose
+pytest
 sphinx
 ipython
+coverage

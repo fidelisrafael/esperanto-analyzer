@@ -1,16 +1,11 @@
 # -*- coding: utf-8 -*-
 
-import esperanto_analyzer
+from context import esperanto_analyzer
 
-import unittest
+import pytest
 
-
-class BasicTestSuite(unittest.TestCase):
+class TestBasicSuite():
     """Basic test cases."""
 
-    def just_test(self):
+    def test_true(self):
         assert True
-
-
-if __name__ == '__main__':
-    unittest.main()
