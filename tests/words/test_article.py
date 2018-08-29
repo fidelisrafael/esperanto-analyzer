@@ -5,6 +5,7 @@ import pytest
 from context import esperanto_analyzer
 
 from esperanto_analyzer.words.base import Word, NotContentError
+from esperanto_analyzer.words.article import InvalidArticleError
 from esperanto_analyzer.words import Article
 
 class TestArticleBasic():
@@ -25,11 +26,45 @@ class TestArticleBasic():
       assert(Article(''))
 
   def test_content(self):
-    word = Article('content')
+    word = Article('la')
 
-    assert(word.content == 'content')
+    assert(word.content == 'la')
 
   def test_metadata_exists(self):
-    word = Article(' ')
+    word = Article('la')
 
     assert(word.metadata == dict())
+
+class TestInvalidArticleContent():
+  def test_empty_content(self):
+    with pytest.raises(NotContentError):
+      assert(Article(''))
+
+  def test_whitespace_content(self):
+    with pytest.raises(InvalidArticleError):
+      assert(Article(' '))
+
+  def test_invalid_content(self):
+    for word in [' ', 'lo', 'en', 'laj']:
+      with pytest.raises(InvalidArticleError):
+        assert(Article(word))
+
+
+class TestArticlePlural():
+  def test_has_plural(self):
+    assert(Article('la').has_plural())
+
+  def test_plural(self):
+    word = Article('la')
+
+    assert(word.plural == False)
+
+  def test_plural_with_plural_context(self):
+    for word in ['ĉevaloj', 'ĉevalojn', 'belaj', 'belajn']:
+      article = Article('la', context = word)
+      assert(article.plural == True)
+
+  def test_plural_with_singular_context(self):
+    for word in ['ĉevalo', 'ĉevalon', 'bela', 'belan', 'multe', 'tre']:
+      article = Article('la', context = word)
+      assert(article.plural == False)
