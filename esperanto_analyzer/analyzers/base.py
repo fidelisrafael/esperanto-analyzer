@@ -6,11 +6,18 @@ class BaseAnalyzer:
     # creates a new version of the default argument in every method call
     if options is None: options = dict()
 
-    self.metadata = dict()
+    self.matches = dict()
     self.options = options
 
   def match(self, word):
     raise NotImplementedError
 
-  def _set_metadata(self, key, value):
-    self.metadata[key] = value
+  def matched(self, type):
+    if not type in self.matches: return False
+
+    return self.matches[type] == True
+
+  def _set_match(self, key, value):
+    self.matches[key] = value
+
+    return value
