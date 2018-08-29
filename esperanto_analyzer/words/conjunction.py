@@ -2,5 +2,5 @@
 from .base import Word
 
 class Conjunction(Word):
-  def __init__(self, content):
-    Word.__init__(self, content)
+  def __init__(self, content, context = None):
+    Word.__init__(self, content, context)
