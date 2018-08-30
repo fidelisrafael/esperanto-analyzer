@@ -4,8 +4,7 @@ import pytest
 
 from context import esperanto_analyzer
 
-from esperanto_analyzer.words.base import Word, NotContentError
-from esperanto_analyzer.words import Preposition
+from esperanto_analyzer.speech import Word, Preposition, NotContentError
 
 class TestPrepositionBasic():
   def test_import(self):

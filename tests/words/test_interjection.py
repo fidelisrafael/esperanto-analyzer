@@ -4,8 +4,7 @@ import pytest
 
 from context import esperanto_analyzer
 
-from esperanto_analyzer.words.base import Word, NotContentError
-from esperanto_analyzer.words import Interjection
+from esperanto_analyzer.speech import Word, Interjection, NotContentError
 
 class TestInterjectionBasic():
   def test_import(self):

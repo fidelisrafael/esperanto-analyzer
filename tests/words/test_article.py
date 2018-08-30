@@ -4,9 +4,8 @@ import pytest
 
 from context import esperanto_analyzer
 
-from esperanto_analyzer.words.base import Word, NotContentError
-from esperanto_analyzer.words.article import InvalidArticleError
-from esperanto_analyzer.words import Article
+from esperanto_analyzer.speech import Word, Article
+from esperanto_analyzer.speech import NotContentError, InvalidArticleError
 
 class TestArticleBasic():
   def test_import(self):

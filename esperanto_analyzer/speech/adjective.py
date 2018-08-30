@@ -8,7 +8,7 @@ as a modifier of a noun to denote a quality of the thing named, to indicate its 
 or to specify a thing as distinct from something else The word red in "the red car" is an adjective.
 """
 
-from .base import Word
+from .word import Word
 
 # pylint: disable=too-few-public-methods,missing-docstring
 class Adjective(Word):

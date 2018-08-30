@@ -1,6 +1,7 @@
+from .word import Word, NotContentError
 from .adverb import Adverb
 from .adjective import Adjective
-from .article import Article
+from .article import Article, InvalidArticleError
 from .conjunction import Conjunction
 from .interjection import Interjection
 from .noun import Noun

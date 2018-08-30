@@ -7,7 +7,7 @@ In linguistics, an interjection is a word or expression that occurs as an uttera
 own and expresses a spontaneous feeling or reaction.
 """
 
-from .base import Word
+from .word import Word
 
 # pylint: disable=too-few-public-methods,missing-docstring,no-self-use
 class Interjection(Word):

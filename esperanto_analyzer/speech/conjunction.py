@@ -7,7 +7,7 @@ In grammar, a conjunction is a part of speech(a word) that connects words, phras
 that are called the conjuncts of the conjoining construction.
 """
 
-from .base import Word
+from .word import Word
 
 # pylint: disable=too-few-public-methods,missing-docstring,no-self-use
 class Conjunction(Word):

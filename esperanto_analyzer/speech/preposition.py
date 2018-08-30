@@ -8,7 +8,7 @@ to another word or element in the clause.
 Prepositions are often used to express spatial or temporal relations (in, under, towards, before)
 """
 
-from .base import Word
+from .word import Word
 
 # pylint: disable=too-few-public-methods,missing-docstring,no-self-use
 class Preposition(Word):

@@ -3,7 +3,8 @@
 import pytest
 
 from context import esperanto_analyzer
-from esperanto_analyzer.words.base import Word, NotContentError
+
+from esperanto_analyzer.speech import Word, NotContentError
 
 class TestWordBasic():
   def test_import(self):

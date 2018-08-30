@@ -4,8 +4,7 @@ import pytest
 
 from context import esperanto_analyzer
 
-from esperanto_analyzer.words.base import Word, NotContentError
-from esperanto_analyzer.words import Noun
+from esperanto_analyzer.speech import Word, Noun, NotContentError
 
 class TestNounBasic():
   def test_import(self):

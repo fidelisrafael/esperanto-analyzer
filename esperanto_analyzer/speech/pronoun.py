@@ -8,7 +8,7 @@ or noun phrase.
 Pronouns are often used to refer to a noun that has already been mentioned.
 """
 
-from .base import Word
+from .word import Word
 
 # pylint: disable=too-few-public-methods,missing-docstring,no-self-use
 class Pronoun(Word):

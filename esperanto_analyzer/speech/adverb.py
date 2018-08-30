@@ -8,7 +8,7 @@ a word group, expressing a relation of place, time, circumstance, manner, cause,
 (e.g., now, yesterday, today, gently, quite, then, there).
 """
 
-from .base import Word
+from .word import Word
 
 # pylint: disable=too-few-public-methods,missing-docstring
 class Adverb(Word):

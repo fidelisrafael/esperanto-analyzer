@@ -9,7 +9,7 @@ Technically, an article is an **adjective**, which is any word that modifies a n
 TODO: Should Article inherits from `Adjective`?
 """
 
-from .base import Word
+from .word import Word
 
 # pylint: disable=too-few-public-methods,missing-docstring
 class Article(Word):

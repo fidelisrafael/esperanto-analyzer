@@ -7,7 +7,7 @@ A verb, is a word (part of speech) that in syntax conveys an action (bring, read
 an occurrence (happen, become), or a state of being (be, exist, stand)
 """
 
-from .base import Word
+from .word import Word
 
 # pylint: disable=too-few-public-methods,missing-docstring,no-self-use
 class Verb(Word):

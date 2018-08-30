@@ -6,7 +6,7 @@ What's a Numeral?
 In linguistics, a numeral is a member of a part of speech(word) characterized by the
 designation of numbers;
 """
-from .base import Word
+from .word import Word
 
 # pylint: disable=too-few-public-methods,missing-docstring,no-self-use
 class Numeral(Word):
