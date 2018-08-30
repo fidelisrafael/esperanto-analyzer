@@ -1,3 +1,8 @@
+"""
+Make 'Parts of Speech' available through the namespace: `esperanto_analyzer.speech`
+Eg: `from esperanto_analyzer.speech import Word, Adjective`
+"""
+
 from .word import Word, NotContentError
 from .adverb import Adverb
 from .adjective import Adjective

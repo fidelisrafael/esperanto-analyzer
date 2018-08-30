@@ -6,3 +6,6 @@ test:
 
 lint:
 	pylint esperanto_analyzer/ --reports=n -f json > .lint_results
+
+formatted_lint:
+	pylint esperanto_analyzer/ --reports=n -f json | pylint-json2html -o pylint.html
