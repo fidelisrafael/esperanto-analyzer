@@ -52,10 +52,9 @@ class Article(Word):
     def _validate_content(self, content):
         Word._validate_content(self, content)
 
-        """
-        Since Esperanto ONLY HAS 1 article("la"), we make sure to validate if the current
-        instance is really representing one valid Esperanto article.
-        """
+
+        # Since Esperanto ONLY HAS 1 article("la"), we make sure to validate if the current
+        # instance is really representing one valid Esperanto article.
         if not content.lower() in self.VALID_ARTICLES:
             raise InvalidArticleError
 
