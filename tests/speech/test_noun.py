@@ -32,3 +32,8 @@ class TestNounBasic():
     word = Noun(' ')
 
     assert(word.metadata == dict())
+
+
+class TestNounGender():
+    def test_has_gender(self):
+        assert(Noun('lingvo').has_gender())
