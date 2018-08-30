@@ -8,5 +8,6 @@ class ArticleMorphologicalAnalyzer(BaseMorphologicalAnalyzer):
     #  MATCHES: ["patro", "patroj", "patron", "patrojn"]
     MATCH_REGEXP = re.compile('^(la)$', re.IGNORECASE|re.UNICODE)
 
-    def word_class(self):
+    @staticmethod
+    def word_class():
         return Article

@@ -8,5 +8,6 @@ class PronounMorphologicalAnalyzer(BaseMorphologicalAnalyzer):
     #  MATCHES: ["patro", "patroj", "patron", "patrojn"]
     MATCH_REGEXP = re.compile('^(.)$', re.IGNORECASE|re.UNICODE)
 
-    def word_class(self):
+    @staticmethod
+    def word_class():
         return Pronoun

@@ -8,5 +8,6 @@ class AdjectiveMorphologicalAnalyzer(BaseMorphologicalAnalyzer):
     #  MATCHES: ["patro", "patroj", "patron", "patrojn"]
     MATCH_REGEXP = re.compile('(.{1,}(a((j?n?))?)$)', re.IGNORECASE|re.UNICODE)
 
-    def word_class(self):
+    @staticmethod
+    def word_class():
         return Adjective
