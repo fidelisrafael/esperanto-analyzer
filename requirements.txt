@@ -3,3 +3,4 @@ sphinx
 ipython
 coverage
 pytest-cov
+pylint
