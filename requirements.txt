@@ -4,3 +4,4 @@ ipython
 coverage
 pytest-cov
 pylint
+pylint-json2html
