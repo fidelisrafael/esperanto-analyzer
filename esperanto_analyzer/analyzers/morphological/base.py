@@ -1,30 +1,32 @@
 # pylint: disable=missing-docstring
 class BaseMorphologicalAnalyzer:
-    def __init__(self, options=None):
+    # OVERWRITING THIS PROPERTY IS REQUIRED FOR ALL SUBCLASSES
+    MATCH_REGEXP = None
+
+    def __init__(self, raw_word, options=None):
         # Python dicts() as default argument is not a great idea since Python don't
         # creates a new version of the default argument in every method call
         if options is None:
             options = dict()
 
         self.options = options
-        self.raw_word = None
+        self.raw_word = raw_word
         self.word = None
         self.matches = dict()
 
-    def analyze(self, word):
-        matches = self.match(word)
+    def analyze(self):
+        matches = self.match()
 
         if matches:
-            self.raw_word = word
             self.matches = matches
-            self.word = self.word_class(word)
+            self.word = self.word_class()(self.raw_word)
 
             return True
 
         return False
 
-    def match(self, word):
-        raise NotImplementedError
+    def match(self):
+        return self.MATCH_REGEXP.match(self.raw_word)
 
-    def word_class(self, word):
+    def word_class(self):
         raise NotImplementedError

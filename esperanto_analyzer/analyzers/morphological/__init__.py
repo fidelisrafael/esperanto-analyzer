@@ -3,6 +3,8 @@ Make 'Parts of Speech' available through the namespace: `esperanto_analyzer.anal
 Eg: `from esperanto_analyzer.analyzers.morphological import AdverbMorphologicalAnalyzer`
 """
 
+from .base import BaseMorphologicalAnalyzer
+
 from .adverb import AdverbMorphologicalAnalyzer
 from .adjective import AdjectiveMorphologicalAnalyzer
 from .article import ArticleMorphologicalAnalyzer

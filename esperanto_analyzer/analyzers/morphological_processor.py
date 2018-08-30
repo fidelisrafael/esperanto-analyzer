@@ -19,6 +19,7 @@ from esperanto_analyzer.analyzers.morphological import AnalyzeResult
 
 
 class MorphologicalProcessor:
+    # TODO: Reorganize this order for better perfomance
     DEFAULT_ANALYZERS = [
         AdjectiveMorphologicalAnalyzer,
         AdverbMorphologicalAnalyzer,
@@ -32,11 +33,11 @@ class MorphologicalProcessor:
         VerbMorphologicalAnalyzer
     ]
 
-    def __init__(self, word):
-        self.word = word
+    def __init__(self, raw_word):
+        self.raw_word = raw_word
 
     def process(self):
-        analyzer = self.__apply_analyzers(self.word, self.DEFAULT_ANALYZERS)
+        analyzer = self.__apply_analyzers(self.raw_word, self.DEFAULT_ANALYZERS)
 
         return self.__finish_result(analyzer)
 
@@ -48,9 +49,7 @@ class MorphologicalProcessor:
             return None
 
         for analyzer in analyzers:
-            # TODO: Should we create one instance for each analysis or the analyzers
-            ## could be changed to be Modules(class static methods) or Singleton
-            analyzer_instance = analyzer()
+            analyzer_instance = analyzer(word)
 
-            if analyzer_instance.analyze(word) is True:
+            if analyzer_instance.analyze() is True:
                 return analyzer_instance

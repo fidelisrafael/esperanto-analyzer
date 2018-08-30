@@ -8,8 +8,5 @@ class AdverbMorphologicalAnalyzer(BaseMorphologicalAnalyzer):
     #  MATCHES: ["patro", "patroj", "patron", "patrojn"]
     MATCH_REGEXP = re.compile('(.{1,}(e((j?n?))?)$)', re.IGNORECASE|re.UNICODE)
 
-    def match(self, word):
-        return self.MATCH_REGEXP.match(word)
-
-    def word_class(self, word):
-        return Adverb(word)
+    def word_class(self):
+        return Adverb
