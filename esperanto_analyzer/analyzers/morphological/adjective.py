@@ -2,10 +2,10 @@
 import re
 
 from esperanto_analyzer.speech import Adjective
-from .base import BaseMorphologicalAnalyzer # TODO: change to module name
+from esperanto_analyzer.analyzers.morphological import BaseMorphologicalAnalyzer
 
 class AdjectiveMorphologicalAnalyzer(BaseMorphologicalAnalyzer):
-    #  MATCHES: ["patro", "patroj", "patron", "patrojn"]
+    #  MATCHES: ["bela", "belaj", "belan", "belajn"]
     MATCH_REGEXP = re.compile('(.{1,}(a((j?n?))?)$)', re.IGNORECASE|re.UNICODE)
 
     @staticmethod
