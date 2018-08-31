@@ -20,13 +20,16 @@ class NumeralMorphologicalAnalyzer(BaseMorphologicalAnalyzer):
         'dek'     # 10
     ]
 
+    # Shared regexp flags
+    RE_FLAGS = re.IGNORECASE|re.UNICODE
+
     # TODO: Should this be dynamic?
     # Basically: `re.compile('(nul|unu|du|tri|kvar|kvin|ses|sep|ok|naŭ|dek)')`
-    BASIC_NUMBERS_REGEXP = re.compile('|'.join(BASIC_NUMBERS_LIST), re.IGNORECASE|re.UNICODE)
+    BASIC_NUMBERS_REGEXP = re.compile('|'.join(BASIC_NUMBERS_LIST), RE_FLAGS)
 
     # TODO: This still matches "unudek", solve it!
     # MATCHES: ["tridek", "okdek", "kvin", "sepcent", "tri miliono"]
-    OTHERS_NUMBERS_REGEXP = re.compile('(unu|du|tri|kvar|kvin|ses|sep|ok|naŭ|dek)?(dek|cent|milionoj|miliono|miliardoj|miliardo|bilionoj|biliono|mil)', re.IGNORECASE|re.UNICODE)
+    OTHERS_NUMBERS_REGEXP = re.compile('(unu|du|tri|kvar|kvin|ses|sep|ok|naŭ|dek)?(dek|cent|milionoj|miliono|miliardoj|miliardo|bilionoj|biliono|mil)', RE_FLAGS)
 
     # MATCHES: ["1", "100", "-123", "9009809809", "-90123283232"]
     NUMBERS_DIGIT_REGEXP = re.compile('-?\d+', re.UNICODE)
@@ -35,7 +38,7 @@ class NumeralMorphologicalAnalyzer(BaseMorphologicalAnalyzer):
     FINAL_REGEXP = '^(%s|%s|%s)$' % (NUMBERS_DIGIT_REGEXP.pattern, BASIC_NUMBERS_REGEXP.pattern, OTHERS_NUMBERS_REGEXP.pattern)
 
     # The final regexp utilized internally in `match()`
-    MATCH_REGEXP = re.compile(FINAL_REGEXP, re.IGNORECASE|re.UNICODE)
+    MATCH_REGEXP = re.compile(FINAL_REGEXP, RE_FLAGS)
 
     @staticmethod
     def word_class():
