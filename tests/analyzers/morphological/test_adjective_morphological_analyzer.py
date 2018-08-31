@@ -48,7 +48,7 @@ class TestAdjectiveMorphologicalAnalyzerBasic():
         assert analyzer.processed is False
 
     def test_match_regexp_value(self):
-        assert AdjectiveMorphologicalAnalyzer.MATCH_REGEXP == re.compile('(.{1,}(a((j?n?))?)$)', re.IGNORECASE|re.UNICODE)
+        assert AdjectiveMorphologicalAnalyzer.MATCH_REGEXP == re.compile('(.{2,}(a((j?n?))?)$)', re.IGNORECASE|re.UNICODE)
 
     def test_match_regexp(self):
         assert AdjectiveMorphologicalAnalyzer.MATCH_REGEXP is not None
@@ -57,53 +57,47 @@ class TestAdjectiveMorphologicalAnalyzerBasic():
         isinstance(AdjectiveMorphologicalAnalyzer.word_class(), Adjective)
 
 class TestAdjectiveMorphologicalAnalyzerMatchMethod():
-    VALID_SINGULAR_WORDS = ['bela', 'belan']
-    VALID_PLURAL_WORDS = ['belaj', 'belajn']
+    VALID_WORDS = ['bela', 'belan', 'belaj', 'belajn']
+    INVALID_WORDS = ['domo', 'la']
 
     def test_match(self):
-        for word in self.VALID_SINGULAR_WORDS:
+        for word in self.VALID_WORDS:
             analyzer = AdjectiveMorphologicalAnalyzer(word)
             matches = analyzer.match()
 
             assert matches is not None
-            assert len(matches.span()) == 2
-
-    def test_match_plural(self):
-        for word in self.VALID_PLURAL_WORDS:
-            analyzer = AdjectiveMorphologicalAnalyzer(word)
-            matches = analyzer.match()
-
-            assert matches is not None
-            assert len(matches.span()) == 2
 
     def test_match_empty(self):
-        analyzer = AdjectiveMorphologicalAnalyzer('io')
-        matches = analyzer.match()
+        for word in self.INVALID_WORDS:
+            analyzer = AdjectiveMorphologicalAnalyzer(word)
+            matches = analyzer.match()
 
-        assert matches is None
+            assert matches is None
 
 class TestAdjectiveMorphologicalAnalyzerAnalyzeMethod():
-    TEST_WORD = 'bongusta'
-    INVALID_WORD = 'io'
-    VALID_WORDS = ['bela', 'belan', 'belaj', 'belajn']
+    INVALID_WORDS = ['io', 'multe', 'domo', 'hundoj', 'kiu', 'vi']
+    VALID_WORDS = ['bela', 'belan', 'belaj', 'belajn', 'bongusta']
 
     def test_invalid_analyze(self):
-        analyzer = AdjectiveMorphologicalAnalyzer(self.INVALID_WORD)
-        result = analyzer.analyze()
+        for word in self.INVALID_WORDS:
+            analyzer = AdjectiveMorphologicalAnalyzer(word)
+            result = analyzer.analyze()
 
-        assert not result
+            assert not result
 
     def test_invalid_analyze_word(self):
-        analyzer = AdjectiveMorphologicalAnalyzer(self.INVALID_WORD)
-        analyzer.analyze()
+        for word in self.INVALID_WORDS:
+            analyzer = AdjectiveMorphologicalAnalyzer(word)
+            analyzer.analyze()
 
-        assert analyzer.word is None
+            assert analyzer.word is None
 
     def test_invalid_analyze_match(self):
-        analyzer = AdjectiveMorphologicalAnalyzer(self.INVALID_WORD)
-        analyzer.analyze()
+        for word in self.INVALID_WORDS:
+            analyzer = AdjectiveMorphologicalAnalyzer(word)
+            analyzer.analyze()
 
-        assert analyzer.matches is None
+            assert analyzer.matches is None
 
     def test_analyze(self):
         for word in self.VALID_WORDS:
@@ -127,9 +121,10 @@ class TestAdjectiveMorphologicalAnalyzerAnalyzeMethod():
             assert analyzer.matches is not None
 
     def test_analyze_return_false(self):
-        analyzer = AdjectiveMorphologicalAnalyzer(self.INVALID_WORD)
+        for word in self.INVALID_WORDS:
+            analyzer = AdjectiveMorphologicalAnalyzer(word)
 
-        assert analyzer.analyze() is False
+            assert analyzer.analyze() is False
 
     def test_analyze_return_true(self):
         for word in self.VALID_WORDS:
