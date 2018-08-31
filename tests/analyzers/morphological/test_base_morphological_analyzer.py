@@ -39,7 +39,7 @@ class TestBaseMorphologicalAnalyzerBasic():
         analyzer = BaseMorphologicalAnalyzer(self.TEST_WORD)
 
         # analyzer.matches is only populated after calling `analyze()` method
-        assert analyzer.matches == dict()
+        assert analyzer.matches is None
 
     def test_initialize_processed(self):
         analyzer = BaseMorphologicalAnalyzer(self.TEST_WORD)
@@ -121,15 +121,30 @@ class TestBaseMorphologicalAnalyzerAnalyzeMethod():
         result = analyzer.analyze()
 
         assert result
-        assert analyzer.matches is not None
+        assert isinstance(analyzer.matches, re.Match)
         assert analyzer.matches
+
+    def test_analyze_matches_span(self):
+        analyzer = TestAnalyzer(self.TEST_WORD)
+        result = analyzer.analyze()
+
+        assert result
+        assert len(analyzer.matches.span()) == 2
+        assert analyzer.matches.span() == (0, 9)
 
     def test_analyze_matches_invalid(self):
         analyzer = TestAnalyzer('io')
         result = analyzer.analyze()
 
         assert result is False
-        assert analyzer.matches == dict()
+        assert analyzer.matches is None
+
+    def test_analyze_matches_span_invalid(self):
+        analyzer = TestAnalyzer('io')
+        result = analyzer.analyze()
+
+        assert result is False
+        assert analyzer.matches is None
         assert not analyzer.matches
 
     def test_analyze_return_true(self):

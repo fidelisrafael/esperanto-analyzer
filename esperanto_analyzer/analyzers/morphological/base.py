@@ -12,7 +12,7 @@ class BaseMorphologicalAnalyzer:
         self.options = options
         self.raw_word = raw_word
         self.word = None
-        self.matches = dict()
+        self.matches = None
         self.processed = False
 
     def match(self):
