@@ -54,7 +54,7 @@ class TestAdjectiveMorphologicalAnalyzerBasic():
         assert AdjectiveMorphologicalAnalyzer.MATCH_REGEXP is not None
 
     def test_word_class(self):
-        isinstance(AdjectiveMorphologicalAnalyzer.word_class(), Adjective)
+        assert isinstance(AdjectiveMorphologicalAnalyzer.word_class()(self.TEST_WORD), Adjective)
 
 class TestAdjectiveMorphologicalAnalyzerMatchMethod():
     VALID_WORDS = ['bela', 'belan', 'belaj', 'belajn']
