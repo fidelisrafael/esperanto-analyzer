@@ -12,5 +12,4 @@ from .word import Word
 
 # pylint: disable=too-few-public-methods,missing-docstring
 class Adjective(Word):
-    def __init__(self, content, context=None):
-        Word.__init__(self, content, context)
+    pass

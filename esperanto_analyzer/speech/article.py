@@ -20,9 +20,6 @@ class Article(Word):
     #  "La homoj kuiras" -> "The people cook" [Plural]
     VALID_ARTICLES = ['la']
 
-    def __init__(self, content, context=None):
-        Word.__init__(self, content, context)
-
     def has_plural(self):
         """
         Articles are ALWAYS written as: "la" but they can be in plural
