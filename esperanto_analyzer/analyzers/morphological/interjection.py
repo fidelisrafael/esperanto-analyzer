@@ -5,8 +5,20 @@ from esperanto_analyzer.speech import Interjection
 from esperanto_analyzer.analyzers.morphological import BaseMorphologicalAnalyzer
 
 class InterjectionMorphologicalAnalyzer(BaseMorphologicalAnalyzer):
-    #  MATCHES: ["patro", "patroj", "patron", "patrojn"]
-    MATCH_REGEXP = re.compile('^(.)$', re.IGNORECASE|re.UNICODE)
+    INTERJECTIONS_LIST = ['Aĥ!', 'Aj!', 'Ba!', 'Baf!', 'Baj!', 'Be!', 'Bis!', 'Diable!', 'Ek!'
+                          'Fi!', 'Fu!', 'Ĝis!', 'Ha!', 'Ha lo!', 'He!', 'Hej!', 'Ho!', 'Ho ve!',
+                          'Hoj!', 'Hola!', 'Hu!', 'Hup!', 'Hura!', 'Lo!', 'Lu lu!', 'Nu!', 'Uf!',
+                          'Up!', 'Ŭa!', 'Ve!', 'Volapukaĵo!'
+                         ]
+
+    # Shared regexp flags
+    RE_FLAGS = re.IGNORECASE|re.UNICODE
+
+    # REGEXP: `/Aĥ!|'Aj!|'Ba!|'Baf!|'Baj!(...)/`
+    INTERJECTIONS_MATCH_REGEXP = re.compile('|'.join(INTERJECTIONS_LIST), RE_FLAGS)
+
+    #  MATCHES only elements in `INTERJECTIONS_LIST`
+    MATCH_REGEXP = re.compile('^(%s)$' % (INTERJECTIONS_MATCH_REGEXP.pattern), RE_FLAGS)
 
     @staticmethod
     def word_class():
