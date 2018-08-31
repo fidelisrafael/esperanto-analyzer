@@ -55,6 +55,7 @@ class TestAdverbMorphologicalAnalyzerBasic():
 
 class TestAdverbMorphologicalAnalyzerMatchMethod():
     VALID_WORDS = ['multe', 'bone', 'rapide', 'almenaŭ', 'ankoraŭ']
+    INVALID_WORDS = ['io', 'bela', 'domo', 'hundoj', 'kiu', 'vi']
 
     def test_match(self):
         for word in self.VALID_WORDS:
@@ -65,33 +66,36 @@ class TestAdverbMorphologicalAnalyzerMatchMethod():
             assert len(matches.span()) == 2
 
     def test_match_empty(self):
-        analyzer = AdverbMorphologicalAnalyzer('io')
-        matches = analyzer.match()
+        for word in self.INVALID_WORDS:
+            analyzer = AdverbMorphologicalAnalyzer(word)
+            matches = analyzer.match()
 
-        assert matches is None
+            assert matches is None
 
 class TestAdverbMorphologicalAnalyzerAnalyzeMethod():
-    TEST_WORD = 'multe'
-    INVALID_WORD = 'io'
+    INVALID_WORDS = ['io', 'bela', 'domo', 'hundoj', 'kiu', 'vi']
     VALID_WORDS = ['multe', 'bone', 'rapide', 'almenaŭ', 'ankoraŭ']
 
     def test_invalid_analyze(self):
-        analyzer = AdverbMorphologicalAnalyzer(self.INVALID_WORD)
-        result = analyzer.analyze()
+        for word in self.INVALID_WORDS:
+            analyzer = AdverbMorphologicalAnalyzer(word)
+            result = analyzer.analyze()
 
-        assert not result
+            assert not result
 
     def test_invalid_analyze_word(self):
-        analyzer = AdverbMorphologicalAnalyzer(self.INVALID_WORD)
-        analyzer.analyze()
+        for word in self.INVALID_WORDS:
+            analyzer = AdverbMorphologicalAnalyzer(word)
+            analyzer.analyze()
 
-        assert analyzer.word is None
+            assert analyzer.word is None
 
     def test_invalid_analyze_match(self):
-        analyzer = AdverbMorphologicalAnalyzer(self.INVALID_WORD)
-        analyzer.analyze()
+        for word in self.INVALID_WORDS:
+            analyzer = AdverbMorphologicalAnalyzer(word)
+            analyzer.analyze()
 
-        assert analyzer.matches is None
+            assert analyzer.matches is None
 
     def test_analyze(self):
         for word in self.VALID_WORDS:
@@ -115,9 +119,10 @@ class TestAdverbMorphologicalAnalyzerAnalyzeMethod():
             assert analyzer.matches is not None
 
     def test_analyze_return_false(self):
-        analyzer = AdverbMorphologicalAnalyzer(self.INVALID_WORD)
+        for word in self.INVALID_WORDS:
+            analyzer = AdverbMorphologicalAnalyzer(word)
 
-        assert analyzer.analyze() is False
+            assert analyzer.analyze() is False
 
     def test_analyze_return_true(self):
         for word in self.VALID_WORDS:
