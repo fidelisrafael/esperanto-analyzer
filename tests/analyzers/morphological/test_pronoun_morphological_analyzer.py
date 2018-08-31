@@ -180,7 +180,7 @@ class TestPronounMorphologicalAnalyzerPersonalPronounsList:
 
     def test_pronouns_acusative_match_final_regexp(self):
         for word in self.BASIC_PERSONAL_PRONOUNS:
-            assert PronounMorphologicalAnalyzer.MATCH_REGEXP.match(wordx)
+            assert PronounMorphologicalAnalyzer.MATCH_REGEXP.match(word)
 
     def test_pronouns_acusative_match_final_regexp_list(self):
         for word in self.BASIC_PERSONAL_PRONOUNS:
