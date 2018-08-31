@@ -51,7 +51,7 @@ class TestAdverbMorphologicalAnalyzerBasic():
         assert AdverbMorphologicalAnalyzer.MATCH_REGEXP is not None
 
     def test_word_class(self):
-        isinstance(AdverbMorphologicalAnalyzer.word_class(), Adverb)
+        assert isinstance(AdverbMorphologicalAnalyzer.word_class()(self.TEST_WORD), Adverb)
 
 class TestAdverbMorphologicalAnalyzerMatchMethod():
     VALID_WORDS = ['multe', 'bone', 'rapide', 'almenaŭ', 'ankoraŭ']
@@ -103,6 +103,12 @@ class TestAdverbMorphologicalAnalyzerAnalyzeMethod():
 
             assert analyzer.analyze()
 
+    def test_adverbs_list(self):
+        for word in AdverbMorphologicalAnalyzer.SPECIAL_ADVERBS:
+            analyzer = AdverbMorphologicalAnalyzer(word)
+
+            assert analyzer.analyze()
+
     def test_analyze_word(self):
         for word in self.VALID_WORDS:
             analyzer = AdverbMorphologicalAnalyzer(word)
@@ -148,3 +154,18 @@ class TestAdverbMorphologicalAnalyzerAnalyzeMethod():
 
             assert analyzer.analyze() is None
             assert analyzer.analyze() is None
+
+class TestAdverbMorphologicalAnalyzerAdversList:
+    def test_adverbs_not_empty(self):
+        assert AdverbMorphologicalAnalyzer.SPECIAL_ADVERBS is not None
+
+    def test_adverbs_not_size(self):
+        assert len(AdverbMorphologicalAnalyzer.SPECIAL_ADVERBS) == 12
+
+    def test_adverbs_match_list(self):
+        for word in AdverbMorphologicalAnalyzer.SPECIAL_ADVERBS:
+            assert AdverbMorphologicalAnalyzer.SPECIAL_ADVERBS_MATCH_REGEXP.match(word)
+
+    def test_adverbs_match_final_regexp_list(self):
+        for word in AdverbMorphologicalAnalyzer.SPECIAL_ADVERBS:
+            assert AdverbMorphologicalAnalyzer.MATCH_REGEXP.match(word)
