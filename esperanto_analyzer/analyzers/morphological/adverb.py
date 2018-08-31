@@ -2,11 +2,37 @@
 import re
 
 from esperanto_analyzer.speech import Adverb
-from .base import BaseMorphologicalAnalyzer # TODO: change to module name
+from esperanto_analyzer.analyzers.morphological import BaseMorphologicalAnalyzer
 
 class AdverbMorphologicalAnalyzer(BaseMorphologicalAnalyzer):
-    #  MATCHES: ["patro", "patroj", "patron", "patrojn"]
-    MATCH_REGEXP = re.compile('(.{1,}(e((j?n?))?)$)', re.IGNORECASE|re.UNICODE)
+    #  MATCHES: ["multe", "flanke", "rapide"]
+    BASE_MATCH_REGEXP = re.compile('(.{1,}(e((j?n?))?)$)', re.IGNORECASE|re.UNICODE)
+
+    # Some specials Esperanto Adverbs list
+    # @see https://www.wikiwand.com/en/Special_Esperanto_adverbs
+    SPECIAL_ADVERBS = [
+        'almenaŭ',
+        'ambaŭ',
+        'ankaŭ',
+        'ankoraŭ',
+        'apenaŭ',
+        'baldaŭ',
+        'ĉirkaŭ',
+        'hieraŭ',
+        'hodiaŭ',
+        'kvazaŭ',
+        'morgaŭ',
+        'preskaŭ'
+    ]
+
+    # Create one regexp joining all the special adverbs
+    SPECIAL_ADVERBS_MATCH_REGEXP = re.compile('|'.join(SPECIAL_ADVERBS), re.IGNORECASE|re.UNICODE)
+
+    # Creates one string representation of the final `MATCH_REGEXP` joining two regexps
+    FINAL_REGEXP = '(%s|%s)' % (BASE_MATCH_REGEXP.pattern, SPECIAL_ADVERBS_MATCH_REGEXP.pattern)
+
+    # Finally create the FINAL regexp joining all the regexp need to match Adverbs
+    MATCH_REGEXP = re.compile(FINAL_REGEXP, re.IGNORECASE|re.UNICODE)
 
     @staticmethod
     def word_class():
