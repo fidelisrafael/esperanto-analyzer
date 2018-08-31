@@ -2,7 +2,7 @@
 import re
 
 from esperanto_analyzer.speech import Noun
-from .base import BaseMorphologicalAnalyzer # TODO: change to module name
+from esperanto_analyzer.analyzers.morphological import BaseMorphologicalAnalyzer
 
 class NounMorphologicalAnalyzer(BaseMorphologicalAnalyzer):
     #  MATCHES: ["patro", "patroj", "patron", "patrojn"]
