@@ -22,7 +22,8 @@ class TestCLIBasic():
         'Numeral': 93,      # Light Yellow
         'Preposition': 36,  # Cian
         'Pronoun': 96,      # Light Cian
-        'Verb': 31          # Red
+        'Verb': 31,         # Red
+        'Undefined': 30     # Black
     }
 
     def test_import(self):

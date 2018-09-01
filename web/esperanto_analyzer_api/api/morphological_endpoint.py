@@ -48,8 +48,11 @@ class MorphologicalAnalyzeEndpoint(Resource):
         data = []
 
         for result in results:
-            # Get the current 'Part of Speech' name, such as: 'Adverb', 'Noun'
-            pos_name = result[1].result.word.__class__.__name__
+            try:
+                # Get the current 'Part of Speech' name, such as: 'Adverb', 'Noun'
+                pos_name = result[1].result.word.__class__.__name__
+            except:
+                pos_name = 'Undefined'
 
             data.append(dict(word=result[0], value=pos_name, extra=dict()))
 

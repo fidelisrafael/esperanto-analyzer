@@ -18,7 +18,8 @@ class CLI():
         'Numeral': 93,      # Light Yellow
         'Preposition': 36,  # Cian
         'Pronoun': 96,      # Light Cian
-        'Verb': 31          # Red
+        'Verb': 31,         # Red
+        'Undefined': 30     # Black
     }
 
     OUTPUT_TABLE_HEADERS = ['Word', 'Part of Speech']
@@ -45,8 +46,12 @@ class CLI():
 
         for data in results:
             current_result = data[1].result
-            # Get the current 'Part of Speech' name, such as: 'Adverb', 'Noun'
-            pos_name = current_result.word.__class__.__name__
+
+            try:
+                # Get the current 'Part of Speech' name, such as: 'Adverb', 'Noun'
+                pos_name = current_result.word.__class__.__name__
+            except:
+                pos_name = 'Undefined'
 
             out_data.append([
                 format_color(data[0], pos_name) if colorize else data[0],
