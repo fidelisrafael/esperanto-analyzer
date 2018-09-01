@@ -37,7 +37,7 @@ class MorphologicalSentenceAnalyzer:
         results = []
 
         for analyze in self.analyzes_results():
-            results.append([analyze.result.raw_word, analyze])
+            results.append([analyze.raw_word, analyze])
 
         return results
 

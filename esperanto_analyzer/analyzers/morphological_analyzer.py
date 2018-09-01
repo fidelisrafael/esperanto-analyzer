@@ -44,13 +44,13 @@ class MorphologicalAnalyzer:
 
         analyzer = self.__apply_analyzers(self.raw_word, self.DEFAULT_ANALYZERS)
 
-        self.results = self.__finish_result(analyzer)
+        self.results = self.__finish_result(result=analyzer, raw_word=self.raw_word)
         self.processed = True
 
         return True
 
-    def __finish_result(self, result):
-        return AnalyzeResult(result)
+    def __finish_result(self, result, raw_word):
+        return AnalyzeResult(result=result, raw_word=raw_word)
 
     def __apply_analyzers(self, word, analyzers=None):
         if analyzers is None or len(analyzers) is 0:
