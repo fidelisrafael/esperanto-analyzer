@@ -42,7 +42,7 @@ class TestMorphologicalSentenceAnalyzerBasic():
     def test_initialize_results(self):
         analyzer = MorphologicalSentenceAnalyzer(self.TEST_SENTENCE)
 
-        assert analyzer.results is None
+        assert analyzer.results() is None
 
     def test_initialize_processed(self):
         analyzer = MorphologicalSentenceAnalyzer(self.TEST_SENTENCE)
@@ -58,13 +58,14 @@ class TestMorphologicalSentenceAnalyzerBasic():
         analyzer = MorphologicalSentenceAnalyzer(self.TEST_SENTENCE)
 
         assert analyzer.analyze()
-        assert analyzer.results is not None
+        assert analyzer.results() is not None
 
     def test_analyze_results_size(self):
         analyzer = MorphologicalSentenceAnalyzer(self.TEST_SENTENCE)
 
         assert analyzer.analyze()
-        assert len(analyzer.results) == 4
+        assert len(analyzer.results()) == 4
+        assert len(analyzer.results()[1]) == 2
 
     def test_analyze_processed(self):
         analyzer = MorphologicalSentenceAnalyzer(self.TEST_SENTENCE)
@@ -82,11 +83,11 @@ class TestMorphologicalSentenceAnalyzerBasic():
         assert analyzer.analyze() is None
         assert analyzer.analyze() is None
 
-    def test_analyze_results_class(self):
+    def test_analyze_internal_results_class(self):
         analyzer = MorphologicalSentenceAnalyzer(self.TEST_SENTENCE)
         analyzer.analyze()
 
-        classes_names = [an.__class__.__name__ for an in analyzer.results]
+        classes_names = [an.__class__.__name__ for an in analyzer.internal_results]
 
         assert classes_names == ['MorphologicalAnalyzer', 'MorphologicalAnalyzer', 'MorphologicalAnalyzer', 'MorphologicalAnalyzer']
 
@@ -95,17 +96,17 @@ class TestMorphologicalSentenceAnalyzerBasic():
 
         assert analyzer.analyzes_results() is None
 
-    def test_analyzes_resultsprocessed(self):
+    def test_analyzes_internals_results_processed(self):
         analyzer = MorphologicalSentenceAnalyzer(self.TEST_SENTENCE)
         analyzer.analyze()
 
-        assert analyzer.analyzes_results() == [result.results for result in analyzer.results]
+        assert analyzer.analyzes_results() == [result.results for result in analyzer.internal_results]
 
     def test_analyzes_results_class(self):
         analyzer = MorphologicalSentenceAnalyzer(self.TEST_SENTENCE)
         analyzer.analyze()
 
-        classes_names = [an.__class__.__name__ for an in analyzer.analyzes_results()]
+        classes_names = [analyze.__class__.__name__ for analyze in analyzer.analyzes_results()]
 
         assert classes_names == ['AnalyzeResult', 'AnalyzeResult', 'AnalyzeResult', 'AnalyzeResult']
 
@@ -113,7 +114,7 @@ class TestMorphologicalSentenceAnalyzerBasic():
         analyzer = MorphologicalSentenceAnalyzer(self.TEST_SENTENCE)
         analyzer.analyze()
 
-        result_classes = [an.result.__class__.__name__ for an in analyzer.analyzes_results()]
+        result_classes = [analyze.result.__class__.__name__ for analyze in analyzer.analyzes_results()]
 
         assert result_classes == ['PronounMorphologicalAnalyzer', 'VerbMorphologicalAnalyzer', 'PrepositionMorphologicalAnalyzer', 'NounMorphologicalAnalyzer']
 
@@ -121,7 +122,7 @@ class TestMorphologicalSentenceAnalyzerBasic():
         analyzer = MorphologicalSentenceAnalyzer(self.TEST_SENTENCE)
         analyzer.analyze()
 
-        result_classes = [an.result.word.__class__.__name__ for an in analyzer.analyzes_results()]
+        result_classes = [analyze.result.word.__class__.__name__ for analyze in analyzer.analyzes_results()]
 
         assert result_classes == ['Pronoun', 'Verb', 'Preposition', 'Noun']
 
@@ -129,22 +130,22 @@ class TestMorphologicalSentenceAnalyzerBasic():
         analyzer = MorphologicalSentenceAnalyzer(self.TEST_SENTENCE)
         analyzer.analyze()
 
-        result_classes = [an.result.raw_word for an in analyzer.analyzes_results()]
+        words = [analyze.result.raw_word for analyze in analyzer.analyzes_results()]
 
-        assert result_classes == ['Mi', 'loĝas', 'en', 'Brazilo']
+        assert words == ['Mi', 'loĝas', 'en', 'Brazilo']
 
     def test_analyzes_results_processed(self):
         analyzer = MorphologicalSentenceAnalyzer(self.TEST_SENTENCE)
         analyzer.analyze()
 
-        result_classes = [an.result.processed for an in analyzer.analyzes_results()]
+        processed_status = [an.result.processed for an in analyzer.analyzes_results()]
 
-        assert result_classes == [True, True, True, True]
+        assert processed_status == [True, True, True, True]
 
     def test_analyzes_results_word_class(self):
         analyzer = MorphologicalSentenceAnalyzer(self.TEST_SENTENCE)
         analyzer.analyze()
 
-        result_classes = [an.result.word_class() for an in analyzer.analyzes_results()]
+        words_classes = [an.result.word_class() for an in analyzer.analyzes_results()]
 
-        assert result_classes == [Pronoun, Verb, Preposition, Noun]
+        assert words_classes == [Pronoun, Verb, Preposition, Noun]

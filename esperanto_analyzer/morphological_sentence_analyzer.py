@@ -9,9 +9,9 @@ from esperanto_analyzer.analyzers import MorphologicalAnalyzer
 class MorphologicalSentenceAnalyzer:
     def __init__(self, sentence):
         self.sentence = sentence
-        self.sentence_words = sentence.split()
+        self.sentence_words = self._split_sentence(sentence)
         self.processed = False
-        self.results = None
+        self.internal_results = None
 
     def analyze(self):
         # Avoid running the same thing many times returning the previous cached results
@@ -19,7 +19,7 @@ class MorphologicalSentenceAnalyzer:
             return None
 
         # Cache the results
-        self.results = self._process_words(self.sentence_words)
+        self.internal_results = self._process_words(self.sentence_words)
         self.processed = True
 
         return True
@@ -28,7 +28,21 @@ class MorphologicalSentenceAnalyzer:
         if not self.processed:
             return None
 
-        return [result.results for result in self.results]
+        return [result.results for result in self.internal_results]
+
+    def results(self):
+        if not self.processed:
+            return None
+
+        results = []
+
+        for analyze in self.analyzes_results():
+            results.append([analyze.result.raw_word, analyze])
+
+        return results
+
+    def _split_sentence(self, sentence):
+        return sentence.split()
 
     def _process_words(self, words):
         results = []
