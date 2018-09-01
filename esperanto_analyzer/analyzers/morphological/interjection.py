@@ -5,7 +5,7 @@ from esperanto_analyzer.speech import Interjection
 from esperanto_analyzer.analyzers.morphological import BaseMorphologicalAnalyzer
 
 class InterjectionMorphologicalAnalyzer(BaseMorphologicalAnalyzer):
-    INTERJECTIONS_LIST = ['Aĥ!', 'Aj!', 'Ba!', 'Baf!', 'Baj!', 'Be!', 'Bis!', 'Diable!', 'Ek!'
+    INTERJECTIONS_LIST = ['Aĥ!', 'Aj!', 'Ba!', 'Baf!', 'Baj!', 'Be!', 'Bis!', 'Diable!', 'Ek!',
                           'Fi!', 'Fu!', 'Ĝis!', 'Ha!', 'Ha lo!', 'He!', 'Hej!', 'Ho!', 'Ho ve!',
                           'Hoj!', 'Hola!', 'Hu!', 'Hup!', 'Hura!', 'Lo!', 'Lu lu!', 'Nu!', 'Uf!',
                           'Up!', 'Ŭa!', 'Ve!', 'Volapukaĵo!'
