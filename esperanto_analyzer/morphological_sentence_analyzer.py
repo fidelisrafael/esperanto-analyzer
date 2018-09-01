@@ -4,9 +4,13 @@
 
 # pylint: disable=too-few-public-methods,missing-docstring
 
+import re
+
 from esperanto_analyzer.analyzers import MorphologicalAnalyzer
 
 class MorphologicalSentenceAnalyzer:
+    SENTENCE_CLEAN_REGEXP = r'[\,\.\(\)\[\]]'
+
     def __init__(self, sentence):
         self.sentence = sentence
         self.sentence_words = self._split_sentence(sentence)
@@ -42,7 +46,12 @@ class MorphologicalSentenceAnalyzer:
         return results
 
     def _split_sentence(self, sentence):
-        return sentence.split()
+        clean_sentence = self._clean_sentence(sentence)
+
+        return clean_sentence.split()
+
+    def _clean_sentence(self, sentence):
+        return re.sub(self.SENTENCE_CLEAN_REGEXP, '', sentence)
 
     def _process_words(self, words):
         results = []
