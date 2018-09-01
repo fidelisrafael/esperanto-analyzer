@@ -54,8 +54,8 @@ class TestPronounMorphologicalAnalyzerBasic():
         isinstance(PronounMorphologicalAnalyzer.word_class()(self.TEST_WORD), Pronoun)
 
 class TestPronounMorphologicalAnalyzerMatchMethod():
-    VALID_WORDS = ['mia', 'miaj', 'miajn', 'via', 'vian', 'ilin', 'ilia', 'iliajn', 'vin']
-    INVALID_WORDS = ['io', 'lo', 'bela', 'la', 'kiu', 'kun', 'multe', 'ankoraŭ', 'kaj', 'ilianj']
+    VALID_WORDS = ['io', 'kiu', 'mia', 'miaj', 'miajn', 'via', 'vian', 'ilin', 'ilia', 'iliajn', 'vin']
+    INVALID_WORDS = ['lo', 'bela', 'la', 'kun', 'multe', 'ankoraŭ', 'kaj', 'ilianj']
 
     def test_match(self):
         for word in self.VALID_WORDS:
@@ -69,13 +69,12 @@ class TestPronounMorphologicalAnalyzerMatchMethod():
         for word in self.INVALID_WORDS:
             analyzer = PronounMorphologicalAnalyzer(word)
             matches = analyzer.match()
-
             assert matches is None
 
 class TestPronounMorphologicalAnalyzerAnalyzeMethod():
-    VALID_WORDS = ['mia', 'miaj', 'miajn', 'via', 'vian', 'ilin', 'ilia']
+    VALID_WORDS = ['mia', 'io', 'kiu', 'miaj', 'miajn', 'via', 'vian', 'ilin', 'ilia']
 
-    INVALID_WORDS = ['io', 'lo', 'bela', 'la', 'kiu', 'kun', 'multe', 'ankoraŭ',
+    INVALID_WORDS = ['lo', 'bela', 'la', 'kun', 'multe', 'ankoraŭ',
                      'a10', '2a0', '-1x', '01#', '102041@', '!9992232213', 'ilianj',
                      'ilimia'
                     ]
