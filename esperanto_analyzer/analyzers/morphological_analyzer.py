@@ -38,7 +38,7 @@ class MorphologicalAnalyzer:
         self.processed = False
         self.results = None
 
-    def process(self):
+    def analyze(self):
         if self.processed:
             return None
 

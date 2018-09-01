@@ -76,20 +76,20 @@ class TestMorphologicalAnalyzerBasic():
     def test_process(self):
         analyzer = MorphologicalAnalyzer(self.TEST_WORD)
 
-        assert analyzer.process()
+        assert analyzer.analyze()
 
     def test_process_cache(self):
         analyzer = MorphologicalAnalyzer(self.TEST_WORD)
 
-        assert analyzer.process() == True
-        assert analyzer.process() == None
+        assert analyzer.analyze() == True
+        assert analyzer.analyze() == None
 
     def test_process_processed_change(self):
         analyzer = MorphologicalAnalyzer(self.TEST_WORD)
 
         assert not analyzer.processed
 
-        analyzer.process()
+        analyzer.analyze()
 
         assert analyzer.processed
 
@@ -98,7 +98,7 @@ class TestMorphologicalAnalyzerBasic():
 
         assert analyzer.results is None
 
-        analyzer.process()
+        analyzer.analyze()
 
         assert analyzer.results is not None
 
@@ -108,7 +108,7 @@ class TestMorphologicalAnalyzerBasic():
 
         analyzer = MorphologicalEmptyAnalyzer(self.TEST_WORD)
 
-        assert analyzer.process()
+        assert analyzer.analyze()
         assert analyzer.results.result is None
         assert analyzer.processed is True
 
@@ -118,7 +118,7 @@ class TestMorphologicalAnalyzerBasic():
 
         analyzer = MorphologicalNoneAnalyzer(self.TEST_WORD)
 
-        assert analyzer.process()
+        assert analyzer.analyze()
         assert analyzer.results.result is None
         assert analyzer.processed is True
 
@@ -144,14 +144,14 @@ class TestMorphologicalAnalyzerTypesBase():
             for word in self.VALID_WORDS[klass]['words']:
                 analyzer = MorphologicalAnalyzer(word)
 
-                assert analyzer.process()
+                assert analyzer.analyze()
 
     def test_results(self):
         for klass in self.VALID_WORDS:
             for word in self.VALID_WORDS[klass]['words']:
                 analyzer = MorphologicalAnalyzer(word)
 
-                assert analyzer.process()
+                assert analyzer.analyze()
                 assert isinstance(analyzer.results, AnalyzeResult)
 
     def test_result_word(self):
@@ -159,7 +159,7 @@ class TestMorphologicalAnalyzerTypesBase():
             for word in self.VALID_WORDS[klass]['words']:
                 analyzer = MorphologicalAnalyzer(word)
 
-                assert analyzer.process()
+                assert analyzer.analyze()
                 assert isinstance(analyzer.results.result.word, klass)
 
     def test_result_raw_word(self):
@@ -167,7 +167,7 @@ class TestMorphologicalAnalyzerTypesBase():
             for word in self.VALID_WORDS[klass]['words']:
                 analyzer = MorphologicalAnalyzer(word)
 
-                assert analyzer.process()
+                assert analyzer.analyze()
                 assert analyzer.results.result.raw_word == word
 
 
@@ -176,7 +176,7 @@ class TestMorphologicalAnalyzerTypesBase():
             for word in self.VALID_WORDS[klass]['words']:
                 analyzer = MorphologicalAnalyzer(word)
 
-                assert analyzer.process()
+                assert analyzer.analyze()
                 assert isinstance(analyzer.results.result, self.VALID_WORDS[klass]['analyzer'])
 
 
@@ -187,34 +187,34 @@ class TestMorphologicalAnalyzerAdverb():
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
 
     def test_adverbs_results(self):
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
             assert isinstance(analyzer.results, AnalyzeResult)
 
     def test_adverbs_results_result_is_analyzer(self):
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
             assert isinstance(analyzer.results.result, AdverbMorphologicalAnalyzer)
 
     def test_adverbs_result_word(self):
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
             assert isinstance(analyzer.results.result.word, Adverb)
 
     def test_adverbs_result_raw_word(self):
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
             assert analyzer.results.result.raw_word == word
 
 class TestMorphologicalAnalyzerAdjective():
@@ -224,34 +224,34 @@ class TestMorphologicalAnalyzerAdjective():
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
 
     def test_adjectives_results(self):
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
             assert isinstance(analyzer.results, AnalyzeResult)
 
     def test_adjectives_results_result_is_analyzer(self):
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
             assert isinstance(analyzer.results.result, AdjectiveMorphologicalAnalyzer)
 
     def test_adjectives_result_word(self):
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
             assert isinstance(analyzer.results.result.word, Adjective)
 
     def test_adjectives_result_raw_word(self):
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
             assert analyzer.results.result.raw_word == word
 
 class TestMorphologicalAnalyzerArticles():
@@ -261,34 +261,34 @@ class TestMorphologicalAnalyzerArticles():
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
 
     def test_articles_results(self):
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
             assert isinstance(analyzer.results, AnalyzeResult)
 
     def test_articles_results_result_is_analyzer(self):
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
             assert isinstance(analyzer.results.result, ArticleMorphologicalAnalyzer)
 
     def test_articles_result_word(self):
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
             assert isinstance(analyzer.results.result.word, Article)
 
     def test_articles_result_raw_word(self):
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
             assert analyzer.results.result.raw_word == word
 
 class TestMorphologicalAnalyzerConjunctions():
@@ -300,34 +300,34 @@ class TestMorphologicalAnalyzerConjunctions():
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
 
     def test_conjunctions_results(self):
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
             assert isinstance(analyzer.results, AnalyzeResult)
 
     def test_conjunctions_results_result_is_analyzer(self):
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
             assert isinstance(analyzer.results.result, ConjunctionMorphologicalAnalyzer)
 
     def test_conjunctions_result_word(self):
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
             assert isinstance(analyzer.results.result.word, Conjunction)
 
     def test_conjunctions_result_raw_word(self):
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
             assert analyzer.results.result.raw_word == word
 
 class TestMorphologicalAnalyzerInterjections():
@@ -337,34 +337,34 @@ class TestMorphologicalAnalyzerInterjections():
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
 
     def test_interjections_results(self):
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
             assert isinstance(analyzer.results, AnalyzeResult)
 
     def test_interjections_results_result_is_analyzer(self):
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
             assert isinstance(analyzer.results.result, InterjectionMorphologicalAnalyzer)
 
     def test_interjections_result_word(self):
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
             assert isinstance(analyzer.results.result.word, Interjection)
 
     def test_interjections_result_raw_word(self):
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
             assert analyzer.results.result.raw_word == word
 
 class TestMorphologicalAnalyzerNouns():
@@ -374,34 +374,34 @@ class TestMorphologicalAnalyzerNouns():
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
 
     def test_nouns_results(self):
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
             assert isinstance(analyzer.results, AnalyzeResult)
 
     def test_nouns_results_result_is_analyzer(self):
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
             assert isinstance(analyzer.results.result, NounMorphologicalAnalyzer)
 
     def test_nouns_result_word(self):
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
             assert isinstance(analyzer.results.result.word, Noun)
 
     def test_nouns_result_raw_word(self):
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
             assert analyzer.results.result.raw_word == word
 
 class TestMorphologicalAnalyzerNumerals():
@@ -411,34 +411,34 @@ class TestMorphologicalAnalyzerNumerals():
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
 
     def test_numerals_results(self):
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
             assert isinstance(analyzer.results, AnalyzeResult)
 
     def test_numerals_results_result_is_analyzer(self):
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
             assert isinstance(analyzer.results.result, NumeralMorphologicalAnalyzer)
 
     def test_numerals_result_word(self):
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
             assert isinstance(analyzer.results.result.word, Numeral)
 
     def test_numerals_result_raw_word(self):
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
             assert analyzer.results.result.raw_word == word
 
 class TestMorphologicalAnalyzerPrepositions():
@@ -450,34 +450,34 @@ class TestMorphologicalAnalyzerPrepositions():
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
 
     def test_prepositions_results(self):
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
             assert isinstance(analyzer.results, AnalyzeResult)
 
     def test_prepositions_results_result_is_analyzer(self):
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
             assert isinstance(analyzer.results.result, PrepositionMorphologicalAnalyzer)
 
     def test_prepositions_result_word(self):
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
             assert isinstance(analyzer.results.result.word, Preposition)
 
     def test_prepositions_result_raw_word(self):
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
             assert analyzer.results.result.raw_word == word
 
 
@@ -488,34 +488,34 @@ class TestMorphologicalAnalyzerPronouns():
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
 
     def test_pronouns_results(self):
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
             assert isinstance(analyzer.results, AnalyzeResult)
 
     def test_pronouns_results_result_is_analyzer(self):
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
             assert isinstance(analyzer.results.result, PronounMorphologicalAnalyzer)
 
     def test_pronouns_result_word(self):
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
             assert isinstance(analyzer.results.result.word, Pronoun)
 
     def test_pronouns_result_raw_word(self):
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
             assert analyzer.results.result.raw_word == word
 
 
@@ -526,32 +526,32 @@ class TestMorphologicalAnalyzerVerbs():
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
 
     def test_verbs_results(self):
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
             assert isinstance(analyzer.results, AnalyzeResult)
 
     def test_verbs_results_result_is_analyzer(self):
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
             assert isinstance(analyzer.results.result, VerbMorphologicalAnalyzer)
 
     def test_verbs_result_word(self):
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
             assert isinstance(analyzer.results.result.word, Verb)
 
     def test_verbs_result_raw_word(self):
         for word in self.VALID_WORDS:
             analyzer = MorphologicalAnalyzer(word)
 
-            assert analyzer.process()
+            assert analyzer.analyze()
             assert analyzer.results.result.raw_word == word
