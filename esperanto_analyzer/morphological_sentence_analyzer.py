@@ -4,7 +4,7 @@
 
 # pylint: disable=too-few-public-methods,missing-docstring
 
-from esperanto_analyzer.processor import MorphologicalProcessor
+from esperanto_analyzer.analyzers import MorphologicalAnalyzer
 
 class MorphologicalSentenceAnalyzer:
     def __init__(self, sentence):
@@ -28,7 +28,7 @@ class MorphologicalSentenceAnalyzer:
         results = []
 
         for word in words:
-            processor = MorphologicalProcessor(word)
+            processor = MorphologicalAnalyzer(word)
             results.append(processor.process())
 
         return results

@@ -18,28 +18,36 @@ from esperanto_analyzer.analyzers.morphological import VerbMorphologicalAnalyzer
 from esperanto_analyzer.analyzers.morphological import AnalyzeResult
 
 
-class MorphologicalProcessor:
+class MorphologicalAnalyzer:
     # TODO: Reorganize this order for better perfomance
     DEFAULT_ANALYZERS = [
-        AdjectiveMorphologicalAnalyzer,
         AdverbMorphologicalAnalyzer,
         ArticleMorphologicalAnalyzer,
         ConjunctionMorphologicalAnalyzer,
         InterjectionMorphologicalAnalyzer,
-        NounMorphologicalAnalyzer,
         NumeralMorphologicalAnalyzer,
         PrepositionMorphologicalAnalyzer,
         PronounMorphologicalAnalyzer,
-        VerbMorphologicalAnalyzer
+        AdjectiveMorphologicalAnalyzer,
+        VerbMorphologicalAnalyzer,
+        NounMorphologicalAnalyzer,
     ]
 
     def __init__(self, raw_word):
         self.raw_word = raw_word
+        self.processed = False
+        self.results = None
 
     def process(self):
+        if self.processed:
+            return None
+
         analyzer = self.__apply_analyzers(self.raw_word, self.DEFAULT_ANALYZERS)
 
-        return self.__finish_result(analyzer)
+        self.results = self.__finish_result(analyzer)
+        self.processed = True
+
+        return True
 
     def __finish_result(self, result):
         return AnalyzeResult(result)
