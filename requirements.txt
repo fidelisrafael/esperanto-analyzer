@@ -1,3 +1,4 @@
+## Development & Testing
 pytest
 sphinx
 ipython
@@ -5,3 +6,6 @@ coverage
 pytest-cov
 pylint
 pylint-json2html
+
+## Production
+tableprint
