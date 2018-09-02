@@ -63,10 +63,15 @@ class TestPrepositionMorphologicalAnalyzerMatchMethod():
                    'post', 'preter', 'pri', 'pro', 'proksime de', 'samkiel', 'sed', 'sekva',
                    'sen', 'sub', 'suben', 'super', 'supren', 'sur', 'tiu', 'tiuj', 'tra',
                    'trans', 'tri vortoj', 'tuj post', 'tutĉirkaŭ',
-                   'ĉe', 'ĉi tiu', 'ĉi tiuj', 'ĉirkaŭ', 'ĝis']
+                   'ĉe', 'ĉi tiu', 'ĉi tiuj', 'ĉirkaŭ', 'ĝis',
+                   'ĉe?', 'ĉi tiu?', 'ĉi tiuj?', 'ĉirkaŭ?', 'ĝis?',
+                   'ĉe????', 'ĉi tiu????', 'ĉi tiuj????', 'ĉirkaŭ????', 'ĝis????',
+                   'ĉe!', 'ĉi tiu!', 'ĉi tiuj!', 'ĉirkaŭ!', 'ĝis!',
+                   'ĉe!!!', 'ĉi tiu!!!', 'ĉi tiuj!!!', 'ĉirkaŭ!!!', 'ĝis!!!',
+                   ]
 
     INVALID_WORDS = ['io', 'bela', 'domo', 'hundoj', 'kiu', 'vi', 'multe', 'ankoraŭ', 'dek',
-                     'du', 'ĉar', 'aŭ']
+                     'du', 'ĉar', 'aŭ', '?', '!']
 
     def test_match(self):
         for word in self.VALID_WORDS:
@@ -93,10 +98,15 @@ class TestPrepositionMorphologicalAnalyzerAnalyzeMethod():
                    'post', 'preter', 'pri', 'pro', 'proksime de', 'samkiel', 'sed', 'sekva',
                    'sen', 'sub', 'suben', 'super', 'supren', 'sur', 'tiu', 'tiuj', 'tra',
                    'trans', 'tri vortoj', 'tuj post', 'tutĉirkaŭ',
-                   'ĉe', 'ĉi tiu', 'ĉi tiuj', 'ĉirkaŭ', 'ĝis']
+                   'ĉe', 'ĉi tiu', 'ĉi tiuj', 'ĉirkaŭ', 'ĝis',
+                   'ĉe?', 'ĉi tiu?', 'ĉi tiuj?', 'ĉirkaŭ?', 'ĝis?',
+                   'ĉe????', 'ĉi tiu????', 'ĉi tiuj????', 'ĉirkaŭ????', 'ĝis????',
+                   'ĉe!', 'ĉi tiu!', 'ĉi tiuj!', 'ĉirkaŭ!', 'ĝis!',
+                   'ĉe!!!', 'ĉi tiu!!!', 'ĉi tiuj!!!', 'ĉirkaŭ!!!', 'ĝis!!!',
+                   ]
 
     INVALID_WORDS = ['io', 'bela', 'domo', 'hundoj', 'kiu', 'vi', 'multe', 'ankoraŭ', 'dek',
-                     'du', 'ĉar', 'aŭ']
+                     'du', 'ĉar', 'aŭ', '?', '!']
 
     def test_invalid_analyze(self):
         for word in self.INVALID_WORDS:
@@ -178,6 +188,20 @@ class TestPrepositionMorphologicalAnalyzerAnalyzeMethod():
             assert analyzer.analyze() is None
 
 class TestPrepositionMorphologicalAnalyzerPrepositionsList:
+    PREPOSITIONS_LIST = ['K', 'al', 'anstataŭ', 'antaŭ', 'antaŭ ol', 'apud', 'da', 'de', 'disde',
+                         'du vortoj', 'dum', 'ekde', 'ekster', 'eksteren', 'el', 'en', 'ene',
+                         'estiel', 'far', 'fare de', 'flanke de', 'for de', 'graŭ', 'inter', 'je',
+                         'kaj ankaŭ', 'kiel', 'kontraŭ', 'kontraŭe de', 'krom', 'kun', 'laŭ',
+                         'mala', 'malantaŭ', 'malgraŭ', 'malkiel', 'malsupre de', 'malsupren',
+                         'meze de', 'na', 'nome de', 'ol', 'per', 'pere de', 'plus', 'po', 'por',
+                         'post', 'preter', 'pri', 'pro', 'proksime de', 'samkiel', 'sed', 'sekva',
+                         'sen', 'sub', 'suben', 'super', 'supren', 'sur', 'tiu', 'tiuj', 'tra',
+                         'trans', 'tri vortoj', 'tuj post', 'tutĉirkaŭ',
+                         'ĉe', 'ĉi tiu', 'ĉi tiuj', 'ĉirkaŭ', 'ĝis']
+
+    def test_preposition_list_not_changed(self):
+        assert PrepositionMorphologicalAnalyzer.PREPOSITIONS_LIST == self.PREPOSITIONS_LIST
+
     def test_prepositions_not_empty(self):
         assert PrepositionMorphologicalAnalyzer.PREPOSITIONS_LIST is not None
 

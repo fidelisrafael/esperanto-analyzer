@@ -5,9 +5,10 @@ from esperanto_analyzer.speech import Noun
 from esperanto_analyzer.analyzers.morphological import BaseMorphologicalAnalyzer
 
 class NounMorphologicalAnalyzer(BaseMorphologicalAnalyzer):
-    #  MATCHES: ["patro", "patroj", "patron", "patrojn"]
+    #  MATCHES: ["patro", "patroj", "patron", "patrojn", "patron?", "patrojn!!"]
     # DONT MATCHES: ["io", "lo"]
-    MATCH_REGEXP = re.compile('(.{2,}(o((j?n?))?)$)', re.IGNORECASE|re.UNICODE)
+    MATCH_REGEXP = re.compile('(.{2,}(o((j?n?)?)([?!]+)?)$)', re.IGNORECASE|re.UNICODE)
+
 
     @staticmethod
     def word_class():

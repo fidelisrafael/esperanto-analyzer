@@ -9,7 +9,7 @@ import re
 from esperanto_analyzer.analyzers import MorphologicalAnalyzer
 
 class MorphologicalSentenceAnalyzer:
-    SENTENCE_CLEAN_REGEXP = r'[\,\.\(\)\[\]]'
+    SENTENCE_CLEAN_REGEXP = r'[\,\.\(\)\[\]\?]'
 
     def __init__(self, sentence):
         self.sentence = sentence

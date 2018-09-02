@@ -54,8 +54,24 @@ class TestPronounMorphologicalAnalyzerBasic():
         isinstance(PronounMorphologicalAnalyzer.word_class()(self.TEST_WORD), Pronoun)
 
 class TestPronounMorphologicalAnalyzerMatchMethod():
-    VALID_WORDS = ['io', 'kiu', 'mia', 'miaj', 'miajn', 'via', 'vian', 'ilin', 'ilia', 'iliajn', 'vin']
-    INVALID_WORDS = ['lo', 'bela', 'la', 'kun', 'multe', 'ankoraŭ', 'kaj', 'ilianj']
+    VALID_WORDS = [
+        'mi', 'vi', 'li', 'ŝi', 'ĝi', 'oni', 'ili', 'ni',
+        'min', 'vin', 'lin', 'ŝin', 'ĝin', 'onin', 'ilin', 'nin',
+        'mia', 'via', 'lia', 'ŝia', 'ĝia', 'onia', 'ilia', 'nia',
+        'miaj', 'viaj', 'liaj', 'ŝiaj', 'ĝiaj', 'oniaj', 'iliaj', 'niaj',
+        'mian', 'vian', 'lian', 'ŝian', 'ĝian', 'onian', 'ilian', 'nian',
+        'miajn', 'viajn', 'liajn', 'ŝiajn', 'ĝiajn', 'oniajn', 'iliajn', 'niajn',
+        'mia?', 'via?', 'lia?', 'ŝia?', 'ĝia?', 'onia?', 'ilia?', 'nia?',
+        'mia???', 'via???', 'lia???', 'ŝia???', 'ĝia???', 'onia???', 'ilia???', 'nia???',
+        'mia!', 'via!', 'lia!', 'ŝia!', 'ĝia!', 'onia!', 'ilia!', 'nia!',
+        'mia!!!', 'via!!!', 'lia!!!', 'ŝia!!!', 'ĝia!!!', 'onia!!!', 'ilia!!!', 'nia!!!',
+        'kiu', 'kio', 'kies', 'tiu', 'ĉi tiu', 'tia',
+        'nenio', 'neniu', 'ĉio', 'ĉiu', 'io', 'iu', 'io ajn', 'iu ajn',
+        'nenion', 'neniun', 'ĉion', 'ĉiun', 'ion', 'iun', 'io ajn', 'iu ajn',
+        'io ajn', 'ĉio ajn', 'iu ajn', 'ĉiu ajn'
+    ]
+
+    INVALID_WORDS = ['lo', 'bela', 'la', 'kun', 'multe', 'ankoraŭ', 'kaj', 'ilianj', '?', '!']
 
     def test_match(self):
         for word in self.VALID_WORDS:
@@ -72,11 +88,26 @@ class TestPronounMorphologicalAnalyzerMatchMethod():
             assert matches is None
 
 class TestPronounMorphologicalAnalyzerAnalyzeMethod():
-    VALID_WORDS = ['mia', 'io', 'kiu', 'miaj', 'miajn', 'via', 'vian', 'ilin', 'ilia']
+    VALID_WORDS = [
+        'mi', 'vi', 'li', 'ŝi', 'ĝi', 'oni', 'ili', 'ni',
+        'min', 'vin', 'lin', 'ŝin', 'ĝin', 'onin', 'ilin', 'nin',
+        'mia', 'via', 'lia', 'ŝia', 'ĝia', 'onia', 'ilia', 'nia',
+        'miaj', 'viaj', 'liaj', 'ŝiaj', 'ĝiaj', 'oniaj', 'iliaj', 'niaj',
+        'mian', 'vian', 'lian', 'ŝian', 'ĝian', 'onian', 'ilian', 'nian',
+        'miajn', 'viajn', 'liajn', 'ŝiajn', 'ĝiajn', 'oniajn', 'iliajn', 'niajn',
+        'mia?', 'via?', 'lia?', 'ŝia?', 'ĝia?', 'onia?', 'ilia?', 'nia?',
+        'mia???', 'via???', 'lia???', 'ŝia???', 'ĝia???', 'onia???', 'ilia???', 'nia???',
+        'mia!', 'via!', 'lia!', 'ŝia!', 'ĝia!', 'onia!', 'ilia!', 'nia!',
+        'mia!!!', 'via!!!', 'lia!!!', 'ŝia!!!', 'ĝia!!!', 'onia!!!', 'ilia!!!', 'nia!!!',
+        'kiu', 'kio', 'kies', 'tiu', 'ĉi tiu', 'tia',
+        'nenio', 'neniu', 'ĉio', 'ĉiu', 'io', 'iu', 'io ajn', 'iu ajn',
+        'nenion', 'neniun', 'ĉion', 'ĉiun', 'ion', 'iun', 'io ajn', 'iu ajn',
+        'io ajn', 'ĉio ajn', 'iu ajn', 'ĉiu ajn'
+    ]
 
     INVALID_WORDS = ['lo', 'bela', 'la', 'kun', 'multe', 'ankoraŭ',
                      'a10', '2a0', '-1x', '01#', '102041@', '!9992232213', 'ilianj',
-                     'ilimia'
+                     'ilimia', '?', '!'
                     ]
 
     def test_invalid_analyze(self):
@@ -163,7 +194,7 @@ class TestPronounMorphologicalAnalyzerPersonalPronounsList:
             assert number in PronounMorphologicalAnalyzer.PERSONAL_PRONOUNS_LIST
 
     def test_pronouns_not_size(self):
-        assert len(PronounMorphologicalAnalyzer.PERSONAL_PRONOUNS_LIST) == 7
+        assert len(PronounMorphologicalAnalyzer.PERSONAL_PRONOUNS_LIST) == 8
 
     def test_pronouns_list_match_regexp(self):
         for word in PronounMorphologicalAnalyzer.PERSONAL_PRONOUNS_LIST:
@@ -186,7 +217,9 @@ class TestPronounMorphologicalAnalyzerPersonalPronounsList:
             assert PronounMorphologicalAnalyzer.MATCH_REGEXP.match(word + 'n')
 
 class TestPronounMorphologicalAnalyzerPossessivePronounsList:
-    BASIC_POSSESSIVE_PRONOUNS = ['mia', 'via', 'lia', 'ŝia', 'ĝia', 'onia', 'ilia']
+    BASIC_POSSESSIVE_PRONOUNS = [
+        'mia', 'via', 'lia', 'ŝia', 'ĝia', 'onia', 'nia', 'ilia'
+    ]
 
     def test_pronouns_not_empty(self):
         assert PronounMorphologicalAnalyzer.PERSONAL_POSSESSIVE_PRONOUNS_LIST is not None
@@ -196,7 +229,7 @@ class TestPronounMorphologicalAnalyzerPossessivePronounsList:
             assert number in PronounMorphologicalAnalyzer.PERSONAL_POSSESSIVE_PRONOUNS_LIST
 
     def test_pronouns_not_size(self):
-        assert len(PronounMorphologicalAnalyzer.PERSONAL_POSSESSIVE_PRONOUNS_LIST) == 7
+        assert len(PronounMorphologicalAnalyzer.PERSONAL_POSSESSIVE_PRONOUNS_LIST) == 8
 
     def test_pronouns_list_match_regexp(self):
         for word in PronounMorphologicalAnalyzer.PERSONAL_POSSESSIVE_PRONOUNS_LIST:
@@ -224,10 +257,11 @@ class TestPronounMorphologicalAnalyzerPossessivePronounsList:
 
 
 class TestPronounMorphologicalAnalyzerAllBasicPersonalPronounsList:
-    ALL_BASIC_PRONOUNS = ['mi', 'vi', 'li', 'ŝi', 'ĝi', 'oni', 'ili',
-                          'mia', 'via', 'lia', 'ŝia', 'ĝia', 'onia', 'ilia',
-                          'miaj', 'viaj', 'liaj', 'ŝiaj', 'ĝiaj', 'oniaj', 'iliaj',
-                          ]
+    ALL_BASIC_PRONOUNS = [
+        'mi', 'vi', 'li', 'ŝi', 'ĝi', 'oni', 'ni', 'ili',
+        'mia', 'via', 'lia', 'ŝia', 'ĝia', 'onia', 'nia', 'ilia',
+        'miaj', 'viaj', 'liaj', 'ŝiaj', 'ĝiaj', 'oniaj', 'niaj', 'iliaj'
+    ]
 
     def test_pronouns_not_empty(self):
         assert PronounMorphologicalAnalyzer.ALL_PERSONAL_PRONOUNS_REGEXP is not None

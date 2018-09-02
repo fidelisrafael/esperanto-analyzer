@@ -55,7 +55,7 @@ class TestVerbMorphologicalAnalyzerBasic():
 
 class TestVerbMorphologicalAnalyzerMatchMethod():
     VALID_WORDS = ['ŝatis', 'ŝatas', 'ŝatu', 'ŝatus', 'ŝati']
-    INVALID_WORDS = ['domo', 'la']
+    INVALID_WORDS = ['domo', 'la', '?', '!']
 
     def test_match(self):
         for word in self.VALID_WORDS:
@@ -73,7 +73,7 @@ class TestVerbMorphologicalAnalyzerMatchMethod():
 
 
 class TestVerbMorphologicalAnalyzerAnalyzeMethod():
-    INVALID_WORDS = ['multe', 'domo', 'hundoj', 'vi'] #, 'kiu']
+    INVALID_WORDS = ['multe', 'domo', 'hundoj', 'vi', '?', '!'] #, 'kiu']
     VALID_WORDS = ['ŝatis', 'ŝatas', 'ŝatu', 'ŝatus', 'ŝati', 'amas']
 
     def test_invalid_analyze(self):

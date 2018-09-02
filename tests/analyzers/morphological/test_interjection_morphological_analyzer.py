@@ -61,7 +61,7 @@ class TestInterjectionMorphologicalAnalyzerMatchMethod():
                    ]
 
     INVALID_WORDS = ['io', 'bela', 'domo', 'hundoj', 'kiu', 'vi', 'multe', 'ankoraŭ', 'dek',
-                     'du', 'ĉar', 'aŭ', 'kontraŭ', 'kontraŭe de', 'krom', 'kun', 'laŭ']
+                     'du', 'ĉar', 'aŭ', 'kontraŭ', 'kontraŭe de', 'krom', 'kun', 'laŭ', '?', '!']
 
     def test_match(self):
         for word in self.VALID_WORDS:
@@ -86,7 +86,7 @@ class TestInterjectionMorphologicalAnalyzerAnalyzeMethod():
                    ]
 
     INVALID_WORDS = ['io', 'bela', 'domo', 'hundoj', 'kiu', 'vi', 'multe', 'ankoraŭ', 'dek',
-                     'du', 'ĉar', 'aŭ', 'kontraŭ', 'kontraŭe de', 'krom', 'kun', 'laŭ']
+                     'du', 'ĉar', 'aŭ', 'kontraŭ', 'kontraŭe de', 'krom', 'kun', 'laŭ', '?', '!']
 
     def test_invalid_analyze(self):
         for word in self.INVALID_WORDS:
@@ -172,7 +172,7 @@ class TestInterjectionMorphologicalAnalyzerPrepositionsList:
         assert InterjectionMorphologicalAnalyzer.INTERJECTIONS_LIST is not None
 
     def test_prepositions_not_size(self):
-        assert len(InterjectionMorphologicalAnalyzer.INTERJECTIONS_LIST) == 31
+        assert len(InterjectionMorphologicalAnalyzer.INTERJECTIONS_LIST) == 32
 
     def test_prepositions_match_list(self):
         for word in InterjectionMorphologicalAnalyzer.INTERJECTIONS_LIST:

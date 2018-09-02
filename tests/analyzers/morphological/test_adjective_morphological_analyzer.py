@@ -48,7 +48,7 @@ class TestAdjectiveMorphologicalAnalyzerBasic():
         assert analyzer.processed is False
 
     def test_match_regexp_value(self):
-        assert AdjectiveMorphologicalAnalyzer.MATCH_REGEXP == re.compile('(.{2,}(a((j?n?))?)$)', re.IGNORECASE|re.UNICODE)
+        assert AdjectiveMorphologicalAnalyzer.MATCH_REGEXP == re.compile('(^[a-zA-Z]{2,}(a((j?n?)?)([?!]+)?)$)', re.IGNORECASE)
 
     def test_match_regexp(self):
         assert AdjectiveMorphologicalAnalyzer.MATCH_REGEXP is not None
@@ -58,7 +58,7 @@ class TestAdjectiveMorphologicalAnalyzerBasic():
 
 class TestAdjectiveMorphologicalAnalyzerMatchMethod():
     VALID_WORDS = ['bela', 'belan', 'belaj', 'belajn']
-    INVALID_WORDS = ['domo', 'la']
+    INVALID_WORDS = ['domo', 'la', '?', '!']
 
     def test_match(self):
         for word in self.VALID_WORDS:
@@ -75,8 +75,30 @@ class TestAdjectiveMorphologicalAnalyzerMatchMethod():
             assert matches is None
 
 class TestAdjectiveMorphologicalAnalyzerAnalyzeMethod():
-    INVALID_WORDS = ['io', 'multe', 'domo', 'hundoj', 'kiu', 'vi']
-    VALID_WORDS = ['bela', 'belan', 'belaj', 'belajn', 'bongusta']
+    INVALID_WORDS = [
+        'io', 'multe', 'domo', 'hundoj', 'kiu', 'vi',
+        '[', ']', '{', '}', '|', '\\', '(', ')', '=', '+', '*',
+        '&', '^', '%', '$', '#', '@', '`', '~', ';', ':', ',', '.',
+        '<', '>', '/',
+        '.!', '!', 'n!', 'jn!', 'j!',
+        '..!', '..!', '..n!', '..jn!',
+        '..aj!', '..ajn!', '..aj', '..ajn', 'ajn',
+        '.!', '?', 'n?', 'jn?', 'j?',
+        '90a', '000an', '999ajn', '000aj', '__ajn', '__an', '__a',
+        'bel0an', 'bel9ajn', '9belajn', '9bela',
+    ]
+
+    VALID_WORDS = [
+        'bela', 'belan', 'belaj', 'belajn', 'bongusta',
+        'bela?', 'belan?', 'belaj?', 'belajn?',
+        'bela???', 'belan???', 'belaj???', 'belajn???',
+        'bela!', 'belan!', 'belaj!', 'belajn!',
+        'bela!!!', 'belan!!!', 'belaj!!!', 'belajn!!!',
+        'bela.', 'belan.', 'belaj.', 'belajn.',
+        'bela...', 'belan...', 'belaj...', 'belajn...',
+        'bela!?!?!?!?!?!?!?', 'belan!?!?!?!?!?!?!?', 'belaj!?!?!?!?!?!?!?', 'belajn!?!?!?!?!?!?!?',
+        'bela......?', 'belan......?', 'belaj......?', 'belajn......?',
+        ]
 
     def test_invalid_analyze(self):
         for word in self.INVALID_WORDS:
