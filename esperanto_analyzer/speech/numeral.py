@@ -10,5 +10,4 @@ from .word import Word
 
 # pylint: disable=too-few-public-methods,missing-docstring,no-self-use
 class Numeral(Word):
-    def __init__(self, content, context=None):
-        Word.__init__(self, content, context)
+    pass

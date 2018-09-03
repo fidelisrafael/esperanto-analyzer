@@ -12,8 +12,6 @@ from .word import Word
 
 # pylint: disable=too-few-public-methods,missing-docstring,no-self-use
 class Pronoun(Word):
-    def __init__(self, content, context=None):
-        Word.__init__(self, content, context)
 
     def has_gender(self):
         return True

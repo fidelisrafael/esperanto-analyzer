@@ -11,8 +11,6 @@ from .word import Word
 
 # pylint: disable=too-few-public-methods,missing-docstring,no-self-use
 class Conjunction(Word):
-    def __init__(self, content, context=None):
-        Word.__init__(self, content, context)
 
     def has_plural(self):
         return False

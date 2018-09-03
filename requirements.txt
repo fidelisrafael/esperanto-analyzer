@@ -1,7 +1,8 @@
-pytest
-sphinx
-ipython
-coverage
-pytest-cov
-pylint
-pylint-json2html
+## CLI
+tableprint
+
+## Web
+Flask==0.10.1
+Flask-RESTful==0.3.5
+flask-restful-swagger==0.19
+Werkzeug==0.11.3
