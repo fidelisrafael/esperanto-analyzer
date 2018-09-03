@@ -4,6 +4,7 @@ init:
 init_dev:
 	pip install -r development_requirements.txt
 	pip install -r test_requirements.txt
+	pip install -r requirements.txt
 
 test:
 	pytest tests --cov-config .coveragerc --cov=esperanto_analyzer --cov-report=html
