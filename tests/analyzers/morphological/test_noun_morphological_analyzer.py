@@ -54,7 +54,7 @@ class TestNounMorphologicalAnalyzerBasic():
         assert isinstance(NounMorphologicalAnalyzer.word_class()(self.TEST_WORD), Noun)
 
     def test_regexp_value(self):
-        assert NounMorphologicalAnalyzer.MATCH_REGEXP == re.compile('(^[a-zA-Zĉĝĵĥŝ]{2,}(o(j?n?)?)$)', re.IGNORECASE|re.UNICODE)
+        assert NounMorphologicalAnalyzer.MATCH_REGEXP == re.compile('(^[a-zA-Zĉĝĵĥŝŭ]{2,}(o(j?n?)?)$)', re.IGNORECASE|re.UNICODE)
 
 class TestNounMorphologicalAnalyzerMatchMethod():
     VALID_WORDS = [
