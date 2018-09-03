@@ -6,13 +6,15 @@ from esperanto_analyzer.analyzers.morphological import BaseMorphologicalAnalyzer
 
 class AdverbMorphologicalAnalyzer(BaseMorphologicalAnalyzer):
     #  MATCHES: ["multe", "flanke", "rapide"]
-    BASE_MATCH_REGEXP = re.compile('([a-zA-Zĉĝĵĥŝ]{2,}(e))', re.IGNORECASE|re.UNICODE)
+    BASE_MATCH_REGEXP = re.compile('([a-zA-Zĉĝĵĥŝŭ]{2,}(e))', re.IGNORECASE|re.UNICODE)
 
-    # Some specials Esperanto Adverbs list
+    # Some specials Esperanto adverbs and time related adverbs(now, yesterday, etc) list
     # @see https://www.wikiwand.com/en/Special_Esperanto_adverbs
+    # @see: http://mylanguages.org/esperanto_adverbs.php
     SPECIAL_ADVERBS = [
         'almenaŭ',
         'ambaŭ',
+        'antaŭ',
         'ankaŭ',
         'ankoraŭ',
         'apenaŭ',
@@ -22,7 +24,20 @@ class AdverbMorphologicalAnalyzer(BaseMorphologicalAnalyzer):
         'hodiaŭ',
         'kvazaŭ',
         'morgaŭ',
-        'preskaŭ'
+        'preskaŭ',
+        'nun',
+        'tiam',
+        'ĉiam',
+        'neniam',
+        'tuj',
+        'jam',
+        'tie',
+        'tien',
+        'ĉie',
+        'nenie',
+        'for',
+        'eksteren',
+        'tre',
     ]
 
     # Create one regexp joining all the special adverbs
