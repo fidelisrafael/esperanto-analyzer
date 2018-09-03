@@ -1,4 +1,5 @@
  ☐ Better split strategy for sentence received by MorphologicalSentenceAnalyzer @high
+ ☐ Collect some sample data for all kinds of 'Part of Speech' to proper test each analyzer @high
  ☐ Test all possives cases for acusative, plural and pontuaction in the beginning and end of words(eg: multe., multe!, multe?) @high
  ☐ Improve Tests Suite (add pytest fixtures, remove duplicated code, better inputs) @medium
  ☐ Add Coveralls (It is not working with private repositories...) @low
