@@ -55,7 +55,7 @@ class TestArticleMorphologicalAnalyzerBasic():
 
 class TestArticleMorphologicalAnalyzerMatchMethod():
     VALID_WORDS = ['la']
-    INVALID_WORDS = ['io', 'lo', 'bela', 'domo', 'hundoj', 'kiu', 'vi', 'kun', 'multe', 'ankoraŭ']
+    INVALID_WORDS = ['io', 'lo', 'bela', 'domo', 'hundoj', 'kiu', 'vi', 'kun', 'multe', 'ankoraŭ', '?', '!']
 
     def test_match(self):
         for word in self.VALID_WORDS:
@@ -74,7 +74,7 @@ class TestArticleMorphologicalAnalyzerMatchMethod():
 
 class TestArticleMorphologicalAnalyzerAnalyzeMethod():
     VALID_WORDS = ['la']
-    INVALID_WORDS = ['io', 'lo', 'bela', 'domo', 'hundoj', 'kiu', 'vi', 'kun', 'multe', 'ankoraŭ']
+    INVALID_WORDS = ['io', 'lo', 'bela', 'domo', 'hundoj', 'kiu', 'vi', 'kun', 'multe', 'ankoraŭ', '?', '!']
 
     def test_invalid_analyze(self):
         for word in self.INVALID_WORDS:

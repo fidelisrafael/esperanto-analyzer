@@ -22,7 +22,8 @@ class TestCLIBasic():
         'Numeral': 93,      # Light Yellow
         'Preposition': 36,  # Cian
         'Pronoun': 96,      # Light Cian
-        'Verb': 31          # Red
+        'Verb': 31,         # Red
+        'Undefined': 30     # Black
     }
 
     def test_import(self):
@@ -47,7 +48,7 @@ class TestCLIBasic():
         output = StringIO()
 
         # Execute the method that will write to `output`
-        CLI.print_results(analyzer.results(), output=output)
+        CLI.print_results(analyzer.simple_results(), output=output)
 
         assert output.getvalue() == self.EXPECT_OUTPUT_TEST_SENTENCE
 
@@ -68,7 +69,7 @@ class TestCLIBasic():
             ['\x1b[34mBrazilo \x1b[0m', '\x1b[34mNoun \x1b[0m']
         ]
 
-        assert CLI.format_table_data(analyzer.results()) == expected
+        assert CLI.format_table_data(analyzer.simple_results()) == expected
 
     def test_format_table_data_without_formating(self):
         analyzer = MorphologicalSentenceAnalyzer(self.TEST_SENTENCE)
@@ -81,5 +82,5 @@ class TestCLIBasic():
             ['Brazilo', 'Noun']
         ]
 
-        assert CLI.format_table_data(analyzer.results(), colorize=False) == expected
+        assert CLI.format_table_data(analyzer.simple_results(), colorize=False) == expected
 

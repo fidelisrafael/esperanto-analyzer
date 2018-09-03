@@ -7,7 +7,8 @@ from esperanto_analyzer.analyzers.morphological import BaseMorphologicalAnalyzer
 class NounMorphologicalAnalyzer(BaseMorphologicalAnalyzer):
     #  MATCHES: ["patro", "patroj", "patron", "patrojn"]
     # DONT MATCHES: ["io", "lo"]
-    MATCH_REGEXP = re.compile('(.{2,}(o((j?n?))?)$)', re.IGNORECASE|re.UNICODE)
+    MATCH_REGEXP = re.compile('(^[a-zA-Zĉĝĵĥŝ]{2,}(o(j?n?)?)$)', re.IGNORECASE|re.UNICODE)
+
 
     @staticmethod
     def word_class():

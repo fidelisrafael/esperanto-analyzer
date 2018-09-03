@@ -16,6 +16,7 @@ class PronounMorphologicalAnalyzer(BaseMorphologicalAnalyzer):
         'li',
         'ŝi',
         'ĝi',
+        'ni',
         'oni',
         'ili'
     ]
@@ -70,7 +71,7 @@ class PronounMorphologicalAnalyzer(BaseMorphologicalAnalyzer):
     ALL_PERSONAL_PRONOUNS_REGEXP = re.compile("(%s|%s|%s|%s)" % (PERSONAL_POSSESSIVE_PRONOUNS_LIST_REGEXP.pattern, PERSONAL_PRONOUNS_LIST_REGEXP.pattern, OTHERS_PRONOUNS_LIST_REGEXP.pattern, INDEFINITE_PRONOUNS_LIST_REGEXP.pattern))
 
     #  MATCHES: ["mi", "via", "viajn", "viaj", "liajn"]
-    MATCH_REGEXP = re.compile('(^(%s((j?n?))?)$)' % ALL_PERSONAL_PRONOUNS_REGEXP.pattern, RE_FLAGS)
+    MATCH_REGEXP = re.compile('(^(%s((j?n?)?))$)' % ALL_PERSONAL_PRONOUNS_REGEXP.pattern, RE_FLAGS)
 
     # breakpoint()
 

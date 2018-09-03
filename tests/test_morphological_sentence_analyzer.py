@@ -1,6 +1,6 @@
 # pylint: disable=missing-docstring,no-self-use
 
-import importlib
+import re
 import pytest
 
 from context import esperanto_analyzer
@@ -149,3 +149,17 @@ class TestMorphologicalSentenceAnalyzerBasic():
         words_classes = [an.result.word_class() for an in analyzer.analyzes_results()]
 
         assert words_classes == [Pronoun, Verb, Preposition, Noun]
+
+
+    def test_sentence_clean_regexp(self):
+        sentence = '(Mia) [nomo] estas, Esperanto. Hodiau estas la jaro 2018. jes'
+        new_sentence = re.sub(MorphologicalSentenceAnalyzer.SENTENCE_CLEAN_REGEXP, '', sentence)
+
+        assert new_sentence == 'Mia nomo estas Esperanto Hodiau estas la jaro 2018 jes'
+
+    def test_undefined_token(self):
+        analyzer = MorphologicalSentenceAnalyzer('Mia asdiosdsds')
+        analyzer.analyze()
+
+        assert analyzer.simple_results() == [['Mia', 'Pronoun'], ['asdiosdsds', 'Undefined']]
+        assert analyzer.simple_results()[1][1] == 'Undefined'
