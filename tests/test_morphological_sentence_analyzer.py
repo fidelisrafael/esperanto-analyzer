@@ -156,3 +156,10 @@ class TestMorphologicalSentenceAnalyzerBasic():
         new_sentence = re.sub(MorphologicalSentenceAnalyzer.SENTENCE_CLEAN_REGEXP, '', sentence)
 
         assert new_sentence == 'Mia nomo estas Esperanto Hodiau estas la jaro 2018 jes'
+
+    def test_undefined_token(self):
+        analyzer = MorphologicalSentenceAnalyzer('Mia asdiosdsds')
+        analyzer.analyze()
+
+        assert analyzer.simple_results() == [['Mia', 'Pronoun'], ['asdiosdsds', 'Undefined']]
+        assert analyzer.simple_results()[1][1] == 'Undefined'
