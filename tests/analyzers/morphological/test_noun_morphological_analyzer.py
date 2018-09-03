@@ -53,8 +53,14 @@ class TestNounMorphologicalAnalyzerBasic():
     def test_word_class(self):
         assert isinstance(NounMorphologicalAnalyzer.word_class()(self.TEST_WORD), Noun)
 
+    def test_regexp_value(self):
+        assert NounMorphologicalAnalyzer.MATCH_REGEXP == re.compile('(^[a-zA-Z]{2,}(o(j?n?)?)$)', re.IGNORECASE|re.UNICODE)
+
 class TestNounMorphologicalAnalyzerMatchMethod():
-    VALID_WORDS = ['domo', 'domoj', 'homon', 'homojn']
+    VALID_WORDS = [
+        'domo', 'domoj', 'homon', 'homojn'
+    ]
+
     INVALID_WORDS = ['io', 'lo', 'bela', 'la', 'kiu', 'vi', 'kun', 'multe', 'ankoraŭ']
 
     def test_match(self):
@@ -73,7 +79,10 @@ class TestNounMorphologicalAnalyzerMatchMethod():
             assert matches is None
 
 class TestNounMorphologicalAnalyzerAnalyzeMethod():
-    VALID_WORDS = ['domo', 'domoj', 'homon', 'homojn']
+    VALID_WORDS = [
+        'domo', 'domoj', 'homon', 'homojn',
+    ]
+
     INVALID_WORDS = ['io', 'lo', 'bela', 'la', 'kiu', 'vi', 'kun', 'multe', 'ankoraŭ']
 
     def test_invalid_analyze(self):
