@@ -54,8 +54,22 @@ class TestAdverbMorphologicalAnalyzerBasic():
         assert isinstance(AdverbMorphologicalAnalyzer.word_class()(self.TEST_WORD), Adverb)
 
 class TestAdverbMorphologicalAnalyzerMatchMethod():
-    VALID_WORDS = ['multe', 'bone', 'rapide', 'almenaŭ', 'ankoraŭ']
-    INVALID_WORDS = ['io', 'bela', 'domo', 'hundoj', 'kiu', 'vi']
+    VALID_WORDS = [
+        'multe', 'bone', 'rapide', 'almenaŭ', 'ankoraŭ'
+    ]
+
+    INVALID_WORDS = [
+        'io', 'bela', 'domo', 'hundoj', 'kiu', 'vi', '?', '!',
+        '[', ']', '{', '}', '|', '\\', '(', ')', '=', '+', '*',
+        '&', '^', '%', '$', '#', '@', '`', '~', ';', ':', ',', '.',
+        '<', '>', '/',
+        '.!', '!', 'n!', 'jn!', 'j!',
+        '..!', '..!', '..n!', '..jn!',
+        '..ej!', '..ejn!', '..ej', '..ejn', 'ejn',
+        '.!', '?', 'n?', 'jn?', 'j?',
+        '90e', '000en', '999ejn', '000ej', '__ejn', '__en', '__e',
+        'bel0en', 'bel9ejn', '9belejn', '9bele', 'almen9ŭ', '.lmenaŭ',
+    ]
 
     def test_match(self):
         for word in self.VALID_WORDS:
@@ -72,9 +86,15 @@ class TestAdverbMorphologicalAnalyzerMatchMethod():
 
             assert matches is None
 
+    def test_match_regexp_value(self):
+        assert AdverbMorphologicalAnalyzer.MATCH_REGEXP == re.compile('^(([a-zA-Z]{2,}(e))|almenaŭ|ambaŭ|ankaŭ|ankoraŭ|apenaŭ|baldaŭ|ĉirkaŭ|hieraŭ|hodiaŭ|kvazaŭ|morgaŭ|preskaŭ)$', re.IGNORECASE)
+
 class TestAdverbMorphologicalAnalyzerAnalyzeMethod():
     INVALID_WORDS = ['io', 'bela', 'domo', 'hundoj', 'kiu', 'vi']
-    VALID_WORDS = ['multe', 'bone', 'rapide', 'almenaŭ', 'ankoraŭ']
+
+    VALID_WORDS = [
+        'multe', 'bone', 'rapide', 'almenaŭ', 'ankoraŭ'
+    ]
 
     def test_invalid_analyze(self):
         for word in self.INVALID_WORDS:
