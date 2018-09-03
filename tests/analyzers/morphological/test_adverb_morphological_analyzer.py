@@ -87,7 +87,7 @@ class TestAdverbMorphologicalAnalyzerMatchMethod():
             assert matches is None
 
     def test_match_regexp_value(self):
-        assert AdverbMorphologicalAnalyzer.MATCH_REGEXP == re.compile('^(([a-zA-Zĉĝĵĥŝ]{2,}(e))|almenaŭ|ambaŭ|ankaŭ|ankoraŭ|apenaŭ|baldaŭ|ĉirkaŭ|hieraŭ|hodiaŭ|kvazaŭ|morgaŭ|preskaŭ)$', re.IGNORECASE)
+        assert AdverbMorphologicalAnalyzer.MATCH_REGEXP == re.compile('^(([a-zA-Zĉĝĵĥŝŭ]{2,}(e))|almenaŭ|ambaŭ|antaŭ|ankaŭ|ankoraŭ|apenaŭ|baldaŭ|ĉirkaŭ|hieraŭ|hodiaŭ|kvazaŭ|morgaŭ|preskaŭ|nun|tiam|ĉiam|neniam|tuj|jam|tie|tien|ĉie|nenie|for|eksteren|tre)$', re.IGNORECASE)
 
 class TestAdverbMorphologicalAnalyzerAnalyzeMethod():
     INVALID_WORDS = ['io', 'bela', 'domo', 'hundoj', 'kiu', 'vi']
@@ -180,7 +180,7 @@ class TestAdverbMorphologicalAnalyzerAdversList:
         assert AdverbMorphologicalAnalyzer.SPECIAL_ADVERBS is not None
 
     def test_adverbs_not_size(self):
-        assert len(AdverbMorphologicalAnalyzer.SPECIAL_ADVERBS) == 12
+        assert len(AdverbMorphologicalAnalyzer.SPECIAL_ADVERBS) == 26
 
     def test_adverbs_match_list(self):
         for word in AdverbMorphologicalAnalyzer.SPECIAL_ADVERBS:
