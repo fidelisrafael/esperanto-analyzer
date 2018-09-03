@@ -36,7 +36,7 @@ class CLI():
         if analyzer.processed is False:
             raise AnalyzerNotProcessedError('Analyzer must be processed before output display. You must call `analyze()` in your instance')
 
-        CLI.print_results(analyzer.results(), output=output)
+        CLI.print_results(analyzer.simple_results(), output=output)
 
     @staticmethod
     def format_table_data(results, colorize=True):
@@ -44,18 +44,10 @@ class CLI():
 
         format_color = lambda string, cname: ('\x1b[%sm%s \x1b[0m') % (CLI.COLORS[cname], string)
 
-        for data in results:
-            current_result = data[1].result
-
-            try:
-                # Get the current 'Part of Speech' name, such as: 'Adverb', 'Noun'
-                pos_name = current_result.word.__class__.__name__
-            except:
-                pos_name = 'Undefined'
-
+        for result in results:
             out_data.append([
-                format_color(data[0], pos_name) if colorize else data[0],
-                format_color(pos_name, pos_name) if colorize else pos_name
+                format_color(result[0], result[1]) if colorize else result[0],
+                format_color(result[1], result[1]) if colorize else result[1]
             ])
 
         return out_data
