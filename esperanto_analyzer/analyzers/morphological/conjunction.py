@@ -34,10 +34,12 @@ class ConjunctionMorphologicalAnalyzer(BaseMorphologicalAnalyzer):
         'tial'
     ]
 
-    CONJUCTIONS_MATCH_REGEXP = re.compile('|'.join(CONJUNCTIONS_LIST), re.IGNORECASE|re.UNICODE)
+    RE_FLAGS = re.IGNORECASE|re.UNICODE
+
+    CONJUCTIONS_MATCH_REGEXP = re.compile('|'.join(CONJUNCTIONS_LIST), RE_FLAGS)
 
     #  MATCHES only elements in `CONJUNCTIONS_LIST`
-    MATCH_REGEXP = re.compile('^(%s)$' % (CONJUCTIONS_MATCH_REGEXP.pattern), re.IGNORECASE|re.UNICODE)
+    MATCH_REGEXP = re.compile('^(%s)$' % (CONJUCTIONS_MATCH_REGEXP.pattern), RE_FLAGS)
 
     @staticmethod
     def word_class():
