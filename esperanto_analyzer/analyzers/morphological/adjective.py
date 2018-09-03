@@ -7,7 +7,7 @@ from esperanto_analyzer.analyzers.morphological import BaseMorphologicalAnalyzer
 class AdjectiveMorphologicalAnalyzer(BaseMorphologicalAnalyzer):
     # MATCHES: ["bela", "belaj", "belan", "belajn"]
     # DONT MATCHES: ["la"] => Article
-    MATCH_REGEXP = re.compile('(^[a-zA-Z]{2,}(a(j?n?)?)$)', re.IGNORECASE|re.UNICODE)
+    MATCH_REGEXP = re.compile('(^[a-zA-Zĉĝĵĥŝ]{2,}(a(j?n?)?)$)', re.IGNORECASE|re.UNICODE)
 
     @staticmethod
     def word_class():

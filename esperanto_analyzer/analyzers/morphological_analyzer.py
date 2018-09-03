@@ -29,8 +29,8 @@ class MorphologicalAnalyzer:
         PrepositionMorphologicalAnalyzer,
         PronounMorphologicalAnalyzer,
         AdjectiveMorphologicalAnalyzer,
-        VerbMorphologicalAnalyzer,
         NounMorphologicalAnalyzer,
+        VerbMorphologicalAnalyzer,
     ]
 
     def __init__(self, raw_word):

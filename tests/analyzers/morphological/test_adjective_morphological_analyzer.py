@@ -48,7 +48,7 @@ class TestAdjectiveMorphologicalAnalyzerBasic():
         assert analyzer.processed is False
 
     def test_match_regexp_value(self):
-        assert AdjectiveMorphologicalAnalyzer.MATCH_REGEXP == re.compile('(^[a-zA-Z]{2,}(a(j?n?)?)$)', re.IGNORECASE)
+        assert AdjectiveMorphologicalAnalyzer.MATCH_REGEXP == re.compile('(^[a-zA-Zĉĝĵĥŝ]{2,}(a(j?n?)?)$)', re.IGNORECASE)
 
     def test_match_regexp(self):
         assert AdjectiveMorphologicalAnalyzer.MATCH_REGEXP is not None
@@ -89,7 +89,7 @@ class TestAdjectiveMorphologicalAnalyzerAnalyzeMethod():
     ]
 
     VALID_WORDS = [
-        'bela', 'belan', 'belaj', 'belajn', 'bongusta'
+        'ĝusta', 'bela', 'belan', 'belaj', 'belajn', 'bongusta'
     ]
 
     def test_invalid_analyze(self):

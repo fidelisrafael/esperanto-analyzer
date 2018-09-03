@@ -57,5 +57,3 @@ class VerbMorphologicalAnalyzer(BaseMorphologicalAnalyzer):
     @staticmethod
     def word_class():
         return Verb
-
-

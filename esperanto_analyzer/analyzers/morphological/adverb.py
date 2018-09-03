@@ -6,7 +6,7 @@ from esperanto_analyzer.analyzers.morphological import BaseMorphologicalAnalyzer
 
 class AdverbMorphologicalAnalyzer(BaseMorphologicalAnalyzer):
     #  MATCHES: ["multe", "flanke", "rapide"]
-    BASE_MATCH_REGEXP = re.compile('([a-zA-Z]{2,}(e))', re.IGNORECASE|re.UNICODE)
+    BASE_MATCH_REGEXP = re.compile('([a-zA-Zĉĝĵĥŝ]{2,}(e))', re.IGNORECASE|re.UNICODE)
 
     # Some specials Esperanto Adverbs list
     # @see https://www.wikiwand.com/en/Special_Esperanto_adverbs
