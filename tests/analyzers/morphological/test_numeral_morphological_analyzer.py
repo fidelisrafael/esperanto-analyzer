@@ -50,18 +50,25 @@ class TestNumeralMorphologicalAnalyzerBasic():
     def test_match_regexp(self):
         assert NumeralMorphologicalAnalyzer.MATCH_REGEXP is not None
 
+    def test_regexp_value(self):
+        assert NumeralMorphologicalAnalyzer.MATCH_REGEXP == re.compile('^(-?\\d+|nul|unu|du|tri|kvar|kvin|ses|sep|ok|naŭ|dek|(unu|du|tri|kvar|kvin|ses|sep|ok|naŭ|dek)?(dek|cent|milionoj|miliono|miliardoj|miliardo|bilionoj|biliono|mil))$', re.IGNORECASE)
+
     def test_word_class(self):
         isinstance(NumeralMorphologicalAnalyzer.word_class()(self.TEST_WORD), Numeral)
 
 class TestNumeralMorphologicalAnalyzerMatchMethod():
-    VALID_WORDS = ['unu', 'dek', 'dudek', 'cent', 'kvarcent', 'mil',
-                   'miliardo', 'miliono', 'miliardoj', 'milionoj']
+    VALID_WORDS = [
+        'unu', 'du', 'tri', 'kvar', 'kvin', 'ses', 'sep', 'ok', 'naŭ', 'dek',
+        'dudek', 'tridek', 'kvardek', 'kvindek', 'sesdek', 'sepdek', 'okdek', 'naŭdek',
+        'cent', 'ducent', 'tricent', 'kvarcent', 'kvincent', 'sescent', 'sepcent', 'okcent', 'naŭcent',
+        'mil', 'dumil', 'miliardo', 'miliono', 'miliardoj', 'milionoj'
+    ]
 
     VALID_DIGITS = ['10', '20', '-1', '0', '102041', '9992232213']
 
     INVALID_DIGITS = ['a10', '2a0', '-1x', '01#', '102041@', '!9992232213']
 
-    INVALID_WORDS = ['io', 'lo', 'bela', 'la', 'kiu', 'vi', 'kun', 'multe', 'ankoraŭ']
+    INVALID_WORDS = ['io', 'lo', 'bela', 'la', 'kiu', 'vi', 'kun', 'multe', 'ankoraŭ', '?', '!']
 
     def test_match(self):
         for word in self.VALID_WORDS:
@@ -94,10 +101,14 @@ class TestNumeralMorphologicalAnalyzerMatchMethod():
             assert matches is None
 
 class TestNumeralMorphologicalAnalyzerAnalyzeMethod():
-    VALID_WORDS = ['unu', 'dek', 'dudek', 'cent', 'kvarcent', 'mil',
-                   'miliardo', 'miliono', 'miliardoj', 'milionoj',
-                   '10', '20', '-1', '0', '102041', '9992232213'
-                   ]
+    VALID_WORDS = [
+        'unu', 'du', 'tri', 'kvar', 'kvin', 'ses', 'sep', 'ok', 'naŭ', 'dek',
+        'dudek', 'tridek', 'kvardek', 'kvindek', 'sesdek', 'sepdek', 'okdek', 'naŭdek',
+        'cent', 'ducent', 'tricent', 'kvarcent', 'kvincent', 'sescent', 'sepcent', 'okcent', 'naŭcent',
+        'mil', 'dumil', 'miliardo', 'miliono', 'miliardoj', 'milionoj',
+        '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
+        '11', '20', '-1', '0', '102041', '9992232213'
+    ]
 
     INVALID_WORDS = ['io', 'lo', 'bela', 'la', 'kiu', 'vi', 'kun', 'multe', 'ankoraŭ',
                      'a10', '2a0', '-1x', '01#', '102041@', '!9992232213'

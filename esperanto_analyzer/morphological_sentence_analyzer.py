@@ -9,7 +9,8 @@ import re
 from esperanto_analyzer.analyzers import MorphologicalAnalyzer
 
 class MorphologicalSentenceAnalyzer:
-    SENTENCE_CLEAN_REGEXP = r'[\,\.\(\)\[\]]'
+    # The same as `string.punctuation`
+    SENTENCE_CLEAN_REGEXP = re.compile('[!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~]')
 
     def __init__(self, sentence):
         self.sentence = sentence
@@ -33,6 +34,9 @@ class MorphologicalSentenceAnalyzer:
             return None
 
         return [result.results for result in self.internal_results]
+
+    def simple_results(self):
+        return self._format_simple_results(self.results())
 
     def results(self):
         if not self.processed:
@@ -63,3 +67,20 @@ class MorphologicalSentenceAnalyzer:
             results.append(analyzer)
 
         return results
+
+    def _format_simple_results(self, results):
+        out_data = []
+
+        for data in results:
+            try:
+                # Get the current 'Part of Speech' name, such as: 'Adverb', 'Noun'
+                pos_name = data[1].result.word.__class__.__name__
+            except:
+                pos_name = 'Undefined'
+
+            out_data.append([
+                data[0],
+                pos_name
+            ])
+
+        return out_data

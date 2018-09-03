@@ -42,8 +42,8 @@ class TestMorphologicalAnalyzerBasic():
         PrepositionMorphologicalAnalyzer,
         PronounMorphologicalAnalyzer,
         AdjectiveMorphologicalAnalyzer,
-        VerbMorphologicalAnalyzer,
         NounMorphologicalAnalyzer,
+        VerbMorphologicalAnalyzer,
     ]
 
     def test_import(self):

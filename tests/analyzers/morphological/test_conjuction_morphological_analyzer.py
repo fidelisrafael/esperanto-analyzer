@@ -54,8 +54,12 @@ class TestConjunctionMorphologicalAnalyzerBasic():
         assert isinstance(ConjunctionMorphologicalAnalyzer.word_class()(self.TEST_WORD), Conjunction)
 
 class TestConjunctionMorphologicalAnalyzerMatchMethod():
-    VALID_WORDS = ['ĉar', 'aŭ', 'kaj', 'kiel']
-    INVALID_WORDS = ['io', 'bela', 'domo', 'hundoj', 'kiu', 'vi', 'kun', 'multe', 'ankoraŭ']
+    VALID_WORDS = [
+        'ĉar', 'aŭ', 'kaj', 'kiel', 'kiam', 'minus', 'nek', 'sed', 'tial',
+
+    ]
+
+    INVALID_WORDS = ['io', 'bela', 'domo', 'hundoj', 'kiu', 'vi', 'kun', 'multe', 'ankoraŭ', '?', '!']
 
     def test_match(self):
         for word in self.VALID_WORDS:
@@ -73,8 +77,13 @@ class TestConjunctionMorphologicalAnalyzerMatchMethod():
             assert matches is None
 
 class TestConjunctionMorphologicalAnalyzerAnalyzeMethod():
-    VALID_WORDS = ['ĉar', 'aŭ', 'kaj', 'kiel']
-    INVALID_WORDS = ['io', 'bela', 'domo', 'hundoj', 'kiu', 'vi', 'kun', 'multe', 'ankoraŭ']
+    VALID_WORDS = [
+        'ĉar', 'aŭ', 'kaj', 'kiel', 'kiam', 'minus', 'nek', 'sed', 'tial'
+    ]
+
+    INVALID_WORDS = [
+        'io', 'bela', 'domo', 'hundoj', 'kiu', 'vi', 'kun', 'multe', 'ankoraŭ', '?', '!'
+    ]
 
     def test_invalid_analyze(self):
         for word in self.INVALID_WORDS:

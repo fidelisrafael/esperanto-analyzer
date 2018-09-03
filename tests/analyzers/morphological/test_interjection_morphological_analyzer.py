@@ -57,7 +57,7 @@ class TestInterjectionMorphologicalAnalyzerMatchMethod():
     VALID_WORDS = ['Aĥ!', 'Aj!', 'Ba!', 'Baf!', 'Baj!', 'Be!', 'Bis!', 'Diable!', 'Ek!',
                    'Fi!', 'Fu!', 'Ĝis!', 'Ha!', 'Ha lo!', 'He!', 'Hej!', 'Ho!', 'Ho ve!',
                    'Hoj!', 'Hola!', 'Hu!', 'Hup!', 'Hura!', 'Lo!', 'Lu lu!', 'Nu!', 'Uf!',
-                   'Up!', 'Ŭa!', 'Ve!', 'Volapukaĵo!'
+                   'Up!', 'Ŭa!', 'Ve!', 'Volapukaĵo!', 'Jen'
                    ]
 
     INVALID_WORDS = ['io', 'bela', 'domo', 'hundoj', 'kiu', 'vi', 'multe', 'ankoraŭ', 'dek',
@@ -82,7 +82,7 @@ class TestInterjectionMorphologicalAnalyzerAnalyzeMethod():
     VALID_WORDS = ['Aĥ!', 'Aj!', 'Ba!', 'Baf!', 'Baj!', 'Be!', 'Bis!', 'Diable!', 'Ek!',
                    'Fi!', 'Fu!', 'Ĝis!', 'Ha!', 'Ha lo!', 'He!', 'Hej!', 'Ho!', 'Ho ve!',
                    'Hoj!', 'Hola!', 'Hu!', 'Hup!', 'Hura!', 'Lo!', 'Lu lu!', 'Nu!', 'Uf!',
-                   'Up!', 'Ŭa!', 'Ve!', 'Volapukaĵo!'
+                   'Up!', 'Ŭa!', 'Ve!', 'Volapukaĵo!', 'Jen'
                    ]
 
     INVALID_WORDS = ['io', 'bela', 'domo', 'hundoj', 'kiu', 'vi', 'multe', 'ankoraŭ', 'dek',
@@ -172,7 +172,7 @@ class TestInterjectionMorphologicalAnalyzerPrepositionsList:
         assert InterjectionMorphologicalAnalyzer.INTERJECTIONS_LIST is not None
 
     def test_prepositions_not_size(self):
-        assert len(InterjectionMorphologicalAnalyzer.INTERJECTIONS_LIST) == 31
+        assert len(InterjectionMorphologicalAnalyzer.INTERJECTIONS_LIST) == 32
 
     def test_prepositions_match_list(self):
         for word in InterjectionMorphologicalAnalyzer.INTERJECTIONS_LIST:

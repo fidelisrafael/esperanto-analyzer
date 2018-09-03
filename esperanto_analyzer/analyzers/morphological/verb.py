@@ -52,10 +52,8 @@ class VerbMorphologicalAnalyzer(BaseMorphologicalAnalyzer):
     VERBS_ENDINGS_ACUSATIVE_PLURAL_REGEXP = re.compile('|'.join(VERBS_ENDINGS_ACUSATIVE_PLURAL), RE_FLAGS)
 
     #  MATCHES: ["ŝatis", "ŝatas", "ŝatu", "ŝatus", "ŝati"] and so on
-    MATCH_REGEXP = re.compile('^(.{2,}(%s|(%s)(j?n?)?))$' % (VERBS_ENDINGS_REGEXP.pattern, VERBS_ENDINGS_ACUSATIVE_PLURAL_REGEXP.pattern), RE_FLAGS)
+    MATCH_REGEXP = re.compile('^([a-zA-Zĉĝĵĥŝ]{2,}(%s|(%s)(j?n?)?))$' % (VERBS_ENDINGS_REGEXP.pattern, VERBS_ENDINGS_ACUSATIVE_PLURAL_REGEXP.pattern), RE_FLAGS)
 
     @staticmethod
     def word_class():
         return Verb
-
-

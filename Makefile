@@ -1,8 +1,12 @@
 init:
 	pip install -r requirements.txt
 
+init_dev:
+	pip install -r development_requirements.txt
+	pip install -r test_requirements.txt
+
 test:
-	pytest tests -v --cov-config .coveragerc --cov=esperanto_analyzer --cov-report=html
+	pytest tests --cov-config .coveragerc --cov=esperanto_analyzer --cov-report=html
 
 lint:
 	pylint esperanto_analyzer/ --reports=n -f json > .lint_results
