@@ -1,0 +1,7 @@
+language: python
+python:
+  - "3.7-dev"  # 3.7 development branch
+install:
+  - make init_dev
+script:
+  - make test

@@ -1,0 +1,11 @@
+ ☐ Better split strategy for sentence received by MorphologicalSentenceAnalyzer @high
+ ☐ Collect some sample data for all kinds of 'Part of Speech' to proper test each analyzer @high
+ ☐ Test all possives cases for acusative, plural and pontuaction in the beginning and end of words(eg: multe., multe!, multe?) @high
+ ☐ Improve Tests Suite (add pytest fixtures, remove duplicated code, better inputs) @medium
+ ☐ Add Coveralls (It is not working with private repositories...) @low
+ ☐ Publish this module to PyPi(Python Package Index) @pipy @medium
+ ☐ Separate web and cli in others modules published at Pypi @pypi @medium
+ ☐ 100% lint warning solved @lint @standard @low
+ ☐ Better documentation for classes @doc @low
+ ☐ Normalize all Regexp matching groups @standard @medium
+ ☐ More sofisticated way of spliting the sentence in MorphologicalSentenceAnalyzer. (Keeping the pontuaction but really spliting in words, eg: ['Mia nomo, estas Adamo!'] => ['Mia', 'nomo', ',', 'estas', 'Adamo', '!'])

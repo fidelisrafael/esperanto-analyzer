@@ -1,6 +1,7 @@
-pytest
-sphinx
-ipython
-coverage
-pytest-cov
-pylint
+## CLI
+tableprint==0.8.0
+
+## Web
+Flask==1.0.2
+Flask-RESTful==0.3.6
+flask-restful-swagger==0.20.1

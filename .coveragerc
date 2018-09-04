@@ -1,2 +1,7 @@
+[run]
+omit =
+    test/*
+    setup.py
+
 [html]
 directory = coverage

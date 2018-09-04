@@ -20,9 +20,6 @@ class Article(Word):
     #  "La homoj kuiras" -> "The people cook" [Plural]
     VALID_ARTICLES = ['la']
 
-    def __init__(self, content, context=None):
-        Word.__init__(self, content, context)
-
     def has_plural(self):
         """
         Articles are ALWAYS written as: "la" but they can be in plural
@@ -52,10 +49,9 @@ class Article(Word):
     def _validate_content(self, content):
         Word._validate_content(self, content)
 
-        """
-        Since Esperanto ONLY HAS 1 article("la"), we make sure to validate if the current
-        instance is really representing one valid Esperanto article.
-        """
+
+        # Since Esperanto ONLY HAS 1 article("la"), we make sure to validate if the current
+        # instance is really representing one valid Esperanto article.
         if not content.lower() in self.VALID_ARTICLES:
             raise InvalidArticleError
 

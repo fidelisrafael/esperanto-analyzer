@@ -32,3 +32,8 @@ class TestPronounBasic():
     word = Pronoun(' ')
 
     assert(word.metadata == dict())
+
+
+class TestPronounGender():
+    def test_has_gender(self):
+        assert(Pronoun('he').has_gender())
