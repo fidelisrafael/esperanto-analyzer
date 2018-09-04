@@ -214,7 +214,7 @@ Make sure you have `python` >= `3.7.0` and  `virtualenv` >= `16.0.0` installed:
 ```bash
 $ python --version
 > Python 3.7.0
-$ virtualenv --help
+$ virtualenv --version
 > 16.0.0
 ```
 
