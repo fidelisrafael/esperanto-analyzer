@@ -19,8 +19,8 @@ with open('test_requirements.txt') as fd:
 
 setup(
     name='esperanto-analyzer',
-    version='0.0.2',
-    description='Morphological and sintatical analyzes of Esperanto sentences',
+    version='0.0.3',
+    description='Morphological and syntactic analysis of Esperanto sentences.',
     long_description=readme,
     author='Rafael Fidelis',
     author_email='rafaelfid3lis@gmail.com',

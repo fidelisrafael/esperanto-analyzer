@@ -54,7 +54,7 @@ If you want to know (or learn) more about Esperanto, you should read the followi
 
 The aim of this project is to create one tool that can read and grammarly classify Esperanto sentences.
 
-The first part of project consists in **Morphological Analyzes** of Esperanto words, the next step is to create a **Sintatical Analyzer** for the language as well.
+The first part of project consists in **Morphological Analyzes** of Esperanto words, the next step is to create a **Syntactical Analyzer** for the language as well.
 
 ---
 
@@ -313,7 +313,7 @@ This library can be used in a miriad of ways to analyze Esperanto sentences and 
 
 ## :calendar: Roadmap <a name="roadmap"></a>
 
-- :white_medium_small_square: Create sintatical analyzers
+- :white_medium_small_square: Create syntactical analyzers
 - :white_medium_small_square: Update this Roadmap with more plans
 
 ---
