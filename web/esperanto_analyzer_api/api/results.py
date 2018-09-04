@@ -1,4 +1,4 @@
-from flask.ext.restful import Resource, Api, marshal_with, fields, abort
+from flask_restful import Resource, Api, marshal_with, fields, abort
 from flask_restful_swagger import swagger
 
 @swagger.model

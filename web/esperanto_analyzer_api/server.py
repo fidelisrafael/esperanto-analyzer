@@ -1,5 +1,5 @@
 from flask import Flask, request
-from flask.ext.restful import Resource, Api, marshal_with, fields, abort
+from flask_restful import Resource, Api, marshal_with, fields, abort
 
 from flask_restful_swagger import swagger
 from esperanto_analyzer_api.api import MorphologicalAnalyzeEndpoint

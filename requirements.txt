@@ -1,8 +1,8 @@
 ## CLI
-tableprint
+tableprint==0.8.0
 
 ## Web
-Flask==0.10.1
-Flask-RESTful==0.3.5
-flask-restful-swagger==0.19
-Werkzeug==0.11.3
+Flask==1.0.2
+Flask-RESTful==0.3.6
+flask-restful-swagger==0.20.1
+Werkzeug==0.14.1
