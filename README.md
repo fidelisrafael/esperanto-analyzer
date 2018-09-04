@@ -69,7 +69,7 @@ Let's start using the CLI to morphologically classify one basic Esperanto senten
 First, install it:
 
 ```bash
-$ pip install esperanto_analyzer
+$ pip install esperanto-analyzer
 ```
 
 Now you will have the libraries source-code files in your system, and also the executable `binary` through CLI, test it:
@@ -263,11 +263,32 @@ You can follow the code coverage stats opening: `coverage/index.html`
 
 **_Note: This web API will be published as a separated package in a near future._**
 
-This library cames with a very simple HTTP Server built on top of Flask to provide an WEB API interface for integration with others systems. You can run the HTTP server
-running the following make task in the root folder of the project:
+This library cames with a very simple HTTP Server built on top of Flask to provide an WEB API interface for integration with others systems. You can run the HTTP server running the following make task in the root folder of the project:
 
 ```bash
 $ make web_api # or simply running: python web/runserver.py
+> python esperanto_analyzer/web/runserver.py
+> * Serving Flask app "esperanto_analyzer.web.api.server" (lazy loading)
+> * Environment: production
+>   WARNING: Do not use the development server in a production environment.
+>   Use a production WSGI server instead.
+> * Debug mode: on
+> * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+```
+
+Or you can just run it from inside any python project with:
+
+```py
+from esperanto_analyzer.web import run_app
+
+run_app(debug=True, port=9090)
+# * Serving Flask app "esperanto_analyzer.web.api.server" (lazy loading)
+# * Environment: production
+#   WARNING: Do not use the development server in a production environment.
+#   Use a production WSGI server instead.
+# * Debug mode: off
+# * Running on http://127.0.0.1:9090/ (Press CTRL+C to quit)
+
 ```
 
 This server has auto-reload(or hot-reload) enabled by default, so you don't need to restart the server when you change the source code.

@@ -1,6 +1,4 @@
-import sys
 import os
-
 from context import esperanto_analyzer
 
 from esperanto_analyzer.web.api.server import run_app
