@@ -72,6 +72,10 @@ First, install it:
 $ pip install esperanto-analyzer
 ```
 
+## CLI usage:
+
+[TODO] (Skip it for now)
+
 Now you will have the libraries source-code files in your system, and also the executable `binary` through CLI, test it:
 
 ```bash
@@ -79,7 +83,6 @@ $ eo-analyzer --version
 > Version: 0.0.1
 ```
 
-## CLI usage:
 
 ```sh
 $ eo-analyzer "Jen la alfabeto de Esperanto. Ĉiu litero ĉiam sonas same kaj literumado estas perfekte regula. Klaku la ekzemplojn por aŭdi la elparolon!"
@@ -315,6 +318,8 @@ This library can be used in a miriad of ways to analyze Esperanto sentences and 
 
 - :white_medium_small_square: Create syntactical analyzers
 - :white_medium_small_square: Update this Roadmap with more plans
+- :white_medium_small_square: Front-end application.
+
 
 ---
 
