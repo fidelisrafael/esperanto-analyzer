@@ -1,1 +1,1 @@
-web: python web/runserver.py
+web: python esperanto_analyzer/web/runserver.py

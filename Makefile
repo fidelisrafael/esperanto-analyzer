@@ -16,4 +16,4 @@ formatted_lint:
 	pylint esperanto_analyzer/ --reports=n -f json | pylint-json2html -o pylint.html
 
 web_api:
-	python web/runserver.py
+	python esperanto_analyzer/web/runserver.py
