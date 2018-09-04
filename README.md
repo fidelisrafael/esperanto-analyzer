@@ -306,13 +306,13 @@ To test it:
 curl http://127.0.0.1:5000/analyze?sentence=Kio%20estas%20Esperanto%3F%20%C4%9Ci%20estas%20lingvo%20tre%20ta%C5%ADga%20por%20internacia%20komunikado.
 ```
 
-#### HTTP API Deploy
+### HTTP API Deploy
 
 If you need an API(like [this one](https://esperanto-analyzer-api.herokuapp.com/analyze?sentence=Esperanto%20estas%20tre%20facila%20lingvo%20al%20lerni)) you can just easily deploy this project to `Heroku` since it comes with a `Procfile` file, this will take no more than 4 commands:
 
 OBS: You will need [Heroku's CLI](https://devcenter.heroku.com/articles/heroku-cli) for this.
 
-```
+```bash
 $ git clone https://github.com/fidelisrafael/esperanto-analyzer.git
 $ cd esperanto-analyzer
 $ heroku create my-esperanto-analyzer
