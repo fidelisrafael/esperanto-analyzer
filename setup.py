@@ -14,19 +14,16 @@ with open('LICENSE') as f:
 with open('requirements.txt') as fd:
     requirements = [line.rstrip() for line in fd]
 
-with open('development_requirements.txt') as fd:
-    requirements.append([line.rstrip() for line in fd])
-
 with open('test_requirements.txt') as fd:
     test_requirements = [line.rstrip() for line in fd]
 
 setup(
     name='esperanto-analyzer',
     version='0.0.1',
-    description='Morphological and Sintatical analyzes of Esperanto sentences',
+    description='Morphological and sintatical analyzes of Esperanto sentences',
     long_description=readme,
     author='Rafael Fidelis',
-    author_email='rafa_fidelis@yahoo.com.br',
+    author_email='rafaelfid3lis@gmail.com',
     url='https://github.com/fidelisrafael/esperanto-analyzer',
     license=lib_license,
     packages=find_packages(exclude=('tests', 'docs')),
