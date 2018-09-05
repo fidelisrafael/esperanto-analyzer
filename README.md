@@ -60,6 +60,10 @@ The first part of project consists in **Morphological Analyzes** of Esperanto wo
 
 ## How to use it?
 
+**DEMO**: You can try the demo API hosted on Heroku:
+
+[https://esperanto-analyzer-api.herokuapp.com/analyze?sentence=Esperanto%20estas%20tre%20facila%20lingvo%20al%20lerni](https://esperanto-analyzer-api.herokuapp.com/analyze?sentence=Esperanto%20estas%20tre%20facila%20lingvo%20al%20lerni)
+
 Simple! You can use it from the CLI(_Command Line Interface_) or importing as a library within your Python code.
 
 Let's start using the CLI to morphologically classify one basic Esperanto sentence:
@@ -262,7 +266,7 @@ You can follow the code coverage stats opening: `coverage/index.html`
 
 ---
 
-#### Built-in JSON Web API
+### Built-in JSON Web API
 
 **_Note: This web API will be published as a separated package in a near future._**
 
@@ -302,6 +306,21 @@ To test it:
 curl http://127.0.0.1:5000/analyze?sentence=Kio%20estas%20Esperanto%3F%20%C4%9Ci%20estas%20lingvo%20tre%20ta%C5%ADga%20por%20internacia%20komunikado.
 ```
 
+### HTTP API Deploy
+
+If you need an API(like [this one](https://esperanto-analyzer-api.herokuapp.com/analyze?sentence=Esperanto%20estas%20tre%20facila%20lingvo%20al%20lerni)) you can just easily deploy this project to `Heroku` since it comes with a `Procfile` file, this will take no more than 4 commands:
+
+OBS: You will need [Heroku's CLI](https://devcenter.heroku.com/articles/heroku-cli) for this.
+
+```bash
+$ git clone https://github.com/fidelisrafael/esperanto-analyzer.git
+$ cd esperanto-analyzer
+$ heroku create my-esperanto-analyzer
+> Creating ⬢ my-analyzer-test... done
+$ git push heroku master:master
+# Open https://my-esperanto-analyzer.herokuapp.com/analyze?sentence=Kiel%20%vi%fartas
+$ heroku open '/analyze?sentence=Kiel%20vi%20fartas?'
+```
 
 ---
 
