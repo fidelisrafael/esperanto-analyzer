@@ -1,4 +1,4 @@
-from flask import request
+from flask import request, Response
 from flask_restful import Resource, Api, marshal_with, fields, abort
 from flask_restful_swagger import swagger
 from .results import MorphologicalAnalyzeResult
@@ -33,13 +33,20 @@ class MorphologicalAnalyzeEndpoint(Resource):
 
         if not sentence:
             raise SentenceRequiredError()
-        try:
-            analyzer = MorphologicalSentenceAnalyzer(sentence=sentence)
-            analyzer.analyze()
 
-            return self._format_results(analyzer.results())
-        except (KeyError, AttributeError) as error:
-            raise SentenceInvalidError()
+        analyzer = MorphologicalSentenceAnalyzer(sentence=sentence)
+        analyzer.analyze()
+
+        return self._format_results(analyzer.results())
+
+    def options(self):
+        response = Response('{}')
+        response.headers['Content-Type'] = 'application/json'
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        response.headers['Access-Control-Allow-Headers'] = '*'
+        response.headers['Access-Control-Allow-Method'] = 'POST, GET, OPTIONS'
+
+        return response
 
     def _format_results(self, results=None):
         if results is None:
