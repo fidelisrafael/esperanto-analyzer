@@ -1,4 +1,6 @@
 from flask import Flask, request
+from flask_cors import CORS
+
 from flask_restful import Resource, Api, marshal_with, fields, abort
 
 from flask_restful_swagger import swagger
@@ -10,7 +12,12 @@ API_VERSION_LABEL = 'v1'
 class MorphologicalAnalyzesAPI(object):
 
     def __init__(self):
+        self.create_app()
+
+
+    def create_app(self):
         self.app = Flask(__name__)
+        CORS(self.app)
 
         custom_errors = {
             'SentenceInvalidError': {
@@ -27,12 +34,17 @@ class MorphologicalAnalyzesAPI(object):
 
         self.api.add_resource(MorphologicalAnalyzeEndpoint, '/analyze', endpoint='analyze')
 
-    def run(self, *args, **kwargs):
+        return self.app
+
+    def run(self, *args, **kwargs): # pragma: no cover
         self.app.config['PROPAGATE_EXCEPTIONS'] = False
         self.app.run(*args, **kwargs)
 
 
-def run_app(*args, **kwargs):
-    app = MorphologicalAnalyzesAPI()
+def create_app():
+    return MorphologicalAnalyzesAPI()
+
+def run_app(*args, **kwargs): # pragma: no cover
+    app = create_app()
     app.run(*args, **kwargs)
 
