@@ -60,13 +60,19 @@ The first part of project consists in **Morphological Analyzes** of Esperanto wo
 
 ## How to use it?
 
-**DEMO**: You can try the demo API hosted on Heroku:
+### Demo
 
-[https://esperanto-analyzer-api.herokuapp.com/analyze?sentence=Esperanto%20estas%20tre%20facila%20lingvo%20al%20lerni](https://esperanto-analyzer-api.herokuapp.com/analyze?sentence=Esperanto%20estas%20tre%20facila%20lingvo%20al%20lerni)
+You can check it out the demo application built with React: [Online Demo](https://fidelisrafael.github.io/esperanto-analyzer-react/) or [Github Repository](https://github.com/fidelisrafael/esperanto-analyzer-react/)
 
-Simple! You can use it from the CLI(_Command Line Interface_) or importing as a library within your Python code.
+[![Frontend application](./docs/esperanto_analyzer_screenshot.png)](https://fidelisrafael.github.io/esperanto-analyzer-react/)
 
-Let's start using the CLI to morphologically classify one basic Esperanto sentence:
+
+Or you can try the demo API hosted on Heroku:
+
+[https://esperanto-analyzer-api.herokuapp.com/analyze?sentence=Esperanto%20estas%20tre%20facila%20lingvo%20al%20lerni](
+https://esperanto-analyzer-api.herokuapp.com/analyze?sentence=Esperanto%20estas%20tre%20facila%20lingvo%20al%20lerni)
+
+---
 
 ## Installation
 
@@ -337,17 +343,17 @@ This library can be used in a miriad of ways to analyze Esperanto sentences and 
 
 - :white_medium_small_square: Create syntactical analyzers
 - :white_medium_small_square: Update this Roadmap with more plans
-- :white_medium_small_square: Front-end application.
+- :white_check_mark: Front-end application. (Done, [check it out](https://fidelisrafael.github.io/esperanto-analyzer-react/))
 
 
 ---
 
 ## :thumbsup: Contributing
 
-Bug reports and pull requests are welcome on GitHub at http://github.com/fidelisrafael/esperanto_analyzer. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at http://github.com/fidelisrafael/esperanto-analyzer. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
 
 ---
 
 ## :memo: License
 
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+The library is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
