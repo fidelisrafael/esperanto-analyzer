@@ -10,9 +10,13 @@
 
 [![Build Status](https://travis-ci.com/fidelisrafael/esperanto-analyzer.svg?token=k5uMpn3U564QqWar8oA1&branch=development)](https://travis-ci.com/fidelisrafael/esperanto-analyzer)
 
+[![codecov](https://codecov.io/gh/fidelisrafael/esperanto-analyzer/branch/development/graph/badge.svg)](https://codecov.io/gh/fidelisrafael/esperanto-analyzer)
+
 ### Master:
 
 [![Build Status](https://travis-ci.com/fidelisrafael/esperanto-analyzer.svg?token=k5uMpn3U564QqWar8oA1&branch=master)](https://travis-ci.com/fidelisrafael/esperanto-analyzer)
+
+[![codecov](https://codecov.io/gh/fidelisrafael/esperanto-analyzer/branch/master/graph/badge.svg)](https://codecov.io/gh/fidelisrafael/esperanto-analyzer)
 
 ---
 
