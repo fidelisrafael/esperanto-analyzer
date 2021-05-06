@@ -5,4 +5,4 @@ tableprint==0.8.0
 Flask==1.0.2
 Flask-RESTful==0.3.6
 flask-restful-swagger==0.20.1
-flask-cors==3.0.6
+flask-cors==3.0.9
